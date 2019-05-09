@@ -1,57 +1,78 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ThinkerbELL</title>
 
-    <link href="./ThinkerbELL_script.css" rel="stylesheet" />
+    <link href="./ThinkerbELL.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <style>
         table {
             width: 100%;
             border-left: 1px solid #444444;
+            border-top: 1px solid #444444;
             border-collapse: collapse;
         }
+
         th, td {
             border-right: 1px solid #444444;
+            border-bottom: 1px solid #444444;
             padding: 10px;
         }
     </style>
 </head>
-    <body>
-        <h1>ThinkerbELL</h1>
-        <table>
-            <tr>
-                <th colspan="2">
-                    <span style="float:left"><input type="text" id="Presentation Name" placeholder="Presentation Names" style="width:1000px;font-size:20px;" /></span>
-</th>
-                <th style="width:500px">
-                    Keywords
-                </th>
-            </tr>
-            <tr>
-                <th colspan="2">
-                    <span style="float:left"> Choose file: <button id="browse" onclick="">Browse</button></span>
-                </th>
-                <th>
-                    <button id="addkeywords" onclick="">+</button>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <span style="float:left">Highlight your keyword to add</span><span style="float:right"><button id="editscript" onclick="">Edit Script</button></span>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <input type="text" id="script" style="width:1000px; height:1000px;" />
-                </th>
-            </tr>
-        </table>
-        <div id='loading'><img id='loading-image' src='./loading_deer.gif' alt='Loading...' /></div>
-
-        <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-        <script src="./ThinkerbELL_script.js"></script>
-    </body>
+<body>
+    <h1>ThinkerbELL</h1>
+    <table>
+        <tr>
+            <th colspan="2">
+                <span style="float:left; height:30px"><input type="text" id="inputPresentationname" placeholder="Presentation Name" style="width:800px;font-size:20px;" /></span>
+            </th>
+            <th style="width:500px; height:100px">
+                <span style="font-size:20px">Keywords</span>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div style="float:left">Copy & Paste</div>
+            </td>
+            <td valign="top" rowspan="3">
+                <table id="tableKeywords">
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Keywords" id="inputKeywords" />
+                        </td>
+                        <td>
+                            <button id="btnAddkeywords" onclick="addKeywords();">+</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span style="float:left">Highlight your keyword to add</span>
+                <span style="float:right"><button id="btnEditscript" onclick="ableEditscript();">Edit Script</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span><textarea id="textareaScript" style="width:800px; height:500px;"></textarea></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="height:100px">
+                <span><button id="btnSave" onclick="saveScript();" style="height:50px; width:100px">Save</button></span>
+                <span><button id="btnStart" onclick=""style="height: 50px; width: 100px" disabled="disabled">Start</button></span>
+            </td>
+        </tr>
+    </table>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+    <script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="./txt.js"></script>
+    <script src="./ThinkerbELL_script.js"></script>
+</body>
 </html>
