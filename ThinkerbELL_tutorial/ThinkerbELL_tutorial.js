@@ -53,7 +53,7 @@ canvas.onclick=function(){
     return;
  }
  if(counter==2){
-   location.href='file:///C:/Users/vano1/Desktop/ThinkerbELL_presentation/ThinkerbELL_presentation.html';
+   location.href='https://rokdaehwa.github.io/JAKY/ThinkerbELL_presentation/ThinkerbELL_presentation2.html';
    return;
  }
 }
