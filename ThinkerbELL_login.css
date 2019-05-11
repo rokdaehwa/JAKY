@@ -6,10 +6,8 @@ body {
     left: 0px;
     text-align: center; 
 }
-h1 {
-    font-family: 'Indie Flower', cursive;
-}
-#loading {
+
+#divLoading {
     width: 100%;  
     height: 100%;  
     top: 0px;
@@ -21,9 +19,15 @@ h1 {
     z-index: 99;  
     text-align: center; 
 } 
-#loading-image {  
+
+#imgLoading {  
     position: absolute;  
     top: 50%;  
     left: 50%; 
     z-index: 100; 
+}
+
+#tblMain {
+    margin: 0 auto;
+    width: 600px;
 }
