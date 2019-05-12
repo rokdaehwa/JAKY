@@ -10,6 +10,10 @@
 
 firebase.initializeApp(firebaseConfig);
 function writeToDatabase(pr_name, script, table) {
+    console.log(origin_pr_name);
+    if (origin_pr_name == pr_name) {
+        firebase.database().ref('/JAKY/' + pr_name).remove();
+    }
     var newKey = firebase.database().ref('/JAKY/' + pr_name).push();
     newKey.set({
         script: script,
@@ -23,6 +27,7 @@ function writeToDatabase(pr_name, script, table) {
             index: Number(i)
         });
     }
+    origin_pr_name = pr_name;
 }
 function readFromDatabase() {
     firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
@@ -36,7 +41,8 @@ function readFromDatabase() {
                 var myKey = keyList[i];
                 if (myValue[myKey].index == 0) {
                     document.getElementById("draggable").innerHTML = myValue[myKey].script;
-                    inputPr_name.value = "Autoshoes";
+                    inputPr_name.value = parameter;
+                    origin_pr_name = parameter;
                 } else {
                     addRow(myValue[myKey].value, (myValue[myKey].index - 1));
                 }
@@ -176,9 +182,13 @@ function saveScript() {
     var textareaScript = document.getElementById("textareaScript");
     btnStart.disabled = "";
     btnEditscript.disabled = '';
-    draggable.innerHTML = textareaScript.value;
-    writeToDatabase(inputPr_name.value, textareaScript.value, tableKeywords);
-    textareaScript.remove();
+    if (textareaScript != null) {
+        draggable.innerHTML = textareaScript.value;
+    }
+    writeToDatabase(inputPr_name.value, draggable.innerHTML, tableKeywords);
+    if (textareaScript != null) {
+        textareaScript.remove();
+    }
 }
 function switch_index(){
 
@@ -189,6 +199,7 @@ if (location.search) {
     var paramIndex = parameter.indexOf("?");
     parameter = parameter.substring(paramIndex + 1);
 }
+var origin_pr_name;
 var inputIndex = document.getElementById("inputIndex");
 var beforetext = document.getElementById("draggable").innerHTML;
 var index_script = "";
