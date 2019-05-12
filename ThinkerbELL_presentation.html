@@ -10,16 +10,33 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   </head>
   <body>
-    <!--Your HTML here-->
-    <div class='text1' id='leftbox'>
+    <div id="main">
+      <div class='text1' id='leftbox'>
+      </div>
+      <div class='text2' id='rightbox'>
+      </div>
+      <i class="fas fa-angle-double-right" id='arrowicon' style="font-size: 850%;"></i>
+      <i class="far fa-times-circle" id='cancel' style="font-size:300%"></i>
+      <div class='small' id='small'></div>
+      <div class='area1' id='area1'></div>
+      <div class='area2' id='area2'></div>
     </div>
-    <div class='text2' id='rightbox'>
-    </div>
-    <i class="fas fa-angle-double-right" id='arrowicon' style="font-size: 850%;"></i>
-    <i class="far fa-times-circle" id='cancel' style="font-size:300%"></i>
-    <div class='small' id='small'></div>
-    <div class='area1' id='area1'></div>
-    <div class='area2' id='area2'></div>
+
+  <div id="bar">
+    <div id="Progress">
+      <div id="PPointer">
+          <img id="man" src="./running_man.gif" style="transform: translateX(20px);">
+      </div>
+  </div>
+  <div id="myTime">
+      <div id="TBar"></div>
+  </div>
+  <div id="Time">
+      <div id="TPointer">
+          <img id="horse" src="./running_horse.gif" style="transform: translateX(20px);">
+      </div>
+  </div>
+  </div>
     <script src="./ThinkerbELL_presentation.js"></script>
   </body>
 </html>

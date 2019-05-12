@@ -32,6 +32,7 @@ var mid=[];
             mid.push(myValue[myKey].value);
         }
         console.log(mid);
+        P=mid.length;
         updatekeywords(mid);
         area1.onclick=function(){
             if(index==-1){
@@ -43,6 +44,8 @@ var mid=[];
             //writeToFB(index);
             console.log(mid);
             updatekeywords(mid);
+            pwidth -= (100/P);
+            ppointer.style.width = pwidth + '%';
         }
         area2.onclick=function(){
             if(index==-1){index=0;}
@@ -51,6 +54,8 @@ var mid=[];
             //deleteFB();
             //writeToFB(index);
             updatekeywords(mid);
+            pwidth += (100/P);
+            ppointer.style.width = pwidth + '%';
         }
     })
 }
@@ -78,3 +83,37 @@ function updatekeywords(mid){
 small.onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
+
+var T=10000;
+var P;
+var pwidth=0;
+var twidth=0;
+var tbar = document.getElementById("TBar"); 
+var tpointer = document.getElementById("TPointer");
+var ppointer = document.getElementById("PPointer");
+var next = document.getElementById("next");
+
+function moveTBar() {
+    var id = setInterval(frame, 10);
+    function frame() {
+      var dif = twidth - pwidth;
+      if (twidth >= 100) {
+        clearInterval(id);
+      } 
+      else {
+        twidth+=(1000/T); 
+        tbar.style.width = twidth + '%'; 
+        tpointer.style.width = twidth + '%';
+      }
+      if(dif>10){
+        tbar.style.backgroundColor = 'red';
+      }
+      else if(dif<-10){
+        tbar.style.backgroundColor = '#e5e500';
+      }
+      else{
+        tbar.style.backgroundColor = 'green';
+      }
+    }
+  }
+  moveTBar();

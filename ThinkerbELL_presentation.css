@@ -1,5 +1,16 @@
 body {
-    background-color:#E6E2CF;
+    background-color:white;
+}
+#main{
+    width: 100%;
+    height: 80%;
+}
+#bar {
+    width: 80%;
+    left: 10%;
+    position: fixed;
+    height: 20%;
+    top: 70%;
 }
 .area1{
     float:left;
@@ -91,3 +102,46 @@ body {
     padding:25px;
     cursor: pointer; 
 }
+#ProgressBar {
+    width: 80%;
+    background-color: white;
+  }
+  #Progress {
+    width: 100%;
+    background-color: white;
+  }
+  #myTime {
+    width: 100%;
+    background-color: grey;
+  }
+  #Time {
+    width: 100%;
+    background-color: white;
+  }
+  #TBar {
+    width: 60%;
+    height: 40px;
+    background-color: green;
+  }
+  
+  #PPointer {
+    width: 0%;
+    height: 40px;
+    background-color: white;
+  }
+  #TPointer {
+    width: 0;
+    height: 40px;
+    background-color: white;
+  }
+  #man {
+    width: 40px;
+    height: 40px;
+    float: right;
+  }
+  #horse {
+    width: 40px;
+    height: 40px;
+    float: right;
+  }
+  
