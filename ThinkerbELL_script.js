@@ -172,12 +172,11 @@ document.getElementById("draggable").onclick = function () {
         plus.onclick = function () {
             var selection = document.getSelection();
             var range = selection.getRangeAt(0).cloneRange()
-            range.surroundContents(sp)
-            selection.removeAllRanges();
-            selection.addRange(range);
+            //range.surroundContents(sp)
+            //selection.removeAllRanges();
+            //selection.addRange(range);
             addRow(selectionText, (tableKeywords.children.length - 1));
             plus.remove();
-            //document.getElementById("draggable").click();
         };
         var x = event.x;
         var y = event.y;
