@@ -21,13 +21,13 @@ function writeToDatabase(pr_name, script, table) {
         newKey = firebase.database().ref('/JAKY/').push();
         newKey.set({
             presentation_name : pr_name,
-            value: table.childNodes[i].childNodes[0].childNodes[0].nodeValue,
-            index: i
+            value: table.childNodes[i].childNodes[1].childNodes[0].nodeValue,
+            index: Number(i)
         });
     }
 }
 function readFromDatabase() {
-    firebase.database().ref('/keywords/').once('value', function (snapshot) {
+    firebase.database().ref('/JAKY/').once('value', function (snapshot) {
         initializeTable();
 
         var myValue = snapshot.val();
@@ -36,7 +36,12 @@ function readFromDatabase() {
 
             for (var i = 0; i < keyList.length; i++) {
                 var myKey = keyList[i];
-                addRow(myValue[myKey].value, myValue[myKey].index);
+                if (myValue[myKey].index == -1) {
+                    textareaScript.value = myValue[myKey].script;
+                    inputPr_name.value = myValue[myKey].presentation_name;
+                } else {
+                    addRow(myValue[myKey].value, (myValue[myKey].index - 1));
+                }
             }
         }
     });
@@ -54,13 +59,15 @@ function addRow(keywords, index) {
     var td1 = document.createElement("TD");
     var td3 = document.createElement("TD");
     var btn_index = document.createElement("button");
-    var text_index = document.createTextNode(index);
+    btn_index.onclick = "switch_index();";
+    var text_index = document.createTextNode(index + 1);
     btn_index.appendChild(text_index);
     td3.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >";
     td1.innerHTML = keywords;
     td0.appendChild(btn_index);
     td1.style.color = "black";
     td0.style.width = "10%";
+    td3.style.width = "10%";
     tr.appendChild(td0);
     tr.appendChild(td1);
     tr.appendChild(td3);
@@ -141,6 +148,9 @@ function saveScript() {
     btnEditscript.disabled = '';
     writeToDatabase(inputPr_name.value, textareaScript.value, tableKeywords);
 }
+function switch_index(){
+
+}
 // JavaScript source code
 var allTable = document.getElementById('allTable');
 var inputPr_name = document.getElementById("inputPresentationname");
@@ -151,5 +161,4 @@ var textareaScript = document.getElementById("textareaScript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
-textareaScript.value = text;
 readFromDatabase();
