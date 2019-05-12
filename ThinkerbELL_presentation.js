@@ -20,7 +20,7 @@ var mid=[];
   function loadDatafromFirebase(){
     var location=window.location.href;
     var questionindex=location.indexOf('?');
-    var parameter=location.substring(questionindex);
+    var parameter=location.substring(questionindex+1);
     return firebase.database().ref('JAKY/'+parameter).once('value', function(snapshot) {
     //return firebase.database().ref('JAKY/Autoshoes').once('value', function(snapshot) {
         var myKey = snapshot.key;
