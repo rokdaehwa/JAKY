@@ -71,10 +71,10 @@ function addRow(keywords, index) {
     var td0 = document.createElement("TD");
     var td1 = document.createElement("TD");
     var td3 = document.createElement("TD");
-    var text_index = document.createTextNode(index + 1);
+    var text_index = Number(index) + 1;
     td3.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >";
     td1.innerHTML = keywords;
-    td0.appendChild(text_index);
+    td0.innerHTML = "<input type='button' value=\""+ text_index + "\" onclick='change_index(\"" + text_index + "\" )' >";
     td1.style.color = "black";
     td0.style.width = "10%";
     td3.style.width = "10%";
@@ -83,14 +83,43 @@ function addRow(keywords, index) {
     tr.appendChild(td3);
     tableKeywords.insertBefore(tr, tableKeywords.children[index]);
     for (var i = index + 2; i < tableKeywords.childNodes.length - 1; i++) {
-        console.log(tableKeywords.childNodes[i]);
+        var td0 = document.createElement("td");
+        var temp_index = Number(tr.childNodes[0].childNodes[0].value) + 1;
+        td0.innerHTML = "<input type='button' value=\"" + temp_index + "\" onclick='change_index(\"" + temp_index + "\" )' >";
         var tr = tableKeywords.childNodes[i];
-        tr.childNodes[0].innerHTML++;
         var td = document.createElement("td");
         td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 1) + "\" )' >";
         tr.childNodes[2].childNodes[0].remove();
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(td0.childNodes[0]);
         tr.childNodes[2].appendChild(td.childNodes[0]);
     }
+}
+function change_index(text_index) {
+    var input_index = document.createElement("input");
+    input_index.placeholder = "#";
+    input_index.style.width = "100%"
+    var tr = tableKeywords.childNodes[text_index];
+    var node = tr.childNodes[0].childNodes[0];
+    tr.childNodes[0].childNodes[0].remove();
+    tr.childNodes[0].appendChild(input_index);
+    input_index.focus();
+    input_index.onkeydown = function () {
+        if (event.keyCode == 13) {
+            if (input_index.value != "") {
+                input_keyword = tableKeywords.childNodes[text_index].childNodes[1].innerHTML;
+                change_keyword = tableKeywords.childNodes[input_index.value].childNodes[1].innerHTML;
+                deleteRow(input_keyword, Number(text_index) - 1);
+                deleteRow(change_keyword, Number(input_index.value) - 1);
+                addRow(input_keyword, Number(input_index.value) - 1);
+                addRow(change_keyword, Number(text_index) - 1);
+            } else {
+                tr.childNodes[0].childNodes[0].remove();
+                tr.childNodes[0].appendChild(node);
+            }
+        }
+    };
+
 }
 function deleteBtn(keywords, index) {
     var td = document.createElement("TD");
@@ -126,11 +155,16 @@ function Enter_Check() {
 }
 function deleteRow(keywords, order) {
     for (var i = Number(order) + 2 ; i < tableKeywords.childNodes.length - 1; i++) {
-        tableKeywords.childNodes[i].childNodes[2].childNodes[0].remove();
+        var tr = tableKeywords.childNodes[i];
+        tr.childNodes[2].childNodes[0].remove();
         var td = document.createElement("td");
         td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >";
-        tableKeywords.childNodes[i].childNodes[2].appendChild(td.childNodes[0]);
-        tableKeywords.childNodes[i].childNodes[0].innerHTML--;
+        tr.childNodes[2].appendChild(td.childNodes[0]);
+        var td0 = document.createElement("td");
+        var temp_index = Number(tr.childNodes[0].childNodes[0].value) - 1;
+        td0.innerHTML = "<input type='button' value=\"" + temp_index + "\" onclick='change_index(\"" + temp_index + "\" )' >";
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(td0.childNodes[0]);
     }
     tableKeywords.childNodes[Number(order) + 1].remove();
 
@@ -192,6 +226,7 @@ function saveScript() {
     btnEditscript.disabled = '';
     if (textareaScript != null) {
         draggable.innerHTML = textareaScript.value;
+        beforetext = textareaScript.value;
     }
     writeToDatabase(inputPr_name.value, draggable.innerHTML, tableKeywords);
     if (textareaScript != null) {
