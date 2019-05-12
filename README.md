@@ -8,3 +8,9 @@ ThinkerbELL_(   ).html
 | ThinkerbELL_login | login to ThinkerbELL |
 | ThinkerbELL_list | lists of presentation |
 | ThinkerbELL_script | can add/delete keywords from script |
+| ThinkerbELL_Timer | timer prototype |
+| ThinkerbELL_progressbar | progressbar prototype with arrow, progress not implemented |
+| ThinkerbELL_progressbar_horse | progressbar prototype with running horse, progress not implemented |
+| ThinkerbELL_Setting | setting page before starting presentation |
+| ThinkerbELL_progresssbar_firebase | progressbar prototype, fully implemented |
+
