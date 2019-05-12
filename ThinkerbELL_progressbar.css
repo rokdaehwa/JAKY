@@ -1,0 +1,37 @@
+#ProgressBar {
+  width: 80%;
+  background-color: #f6f6f6;
+}
+#Progress {
+  width: 100%;
+  background-color: #f6f6f6;
+}
+#myTime {
+  width: 100%;
+  background-color: grey;
+}
+#Time {
+  width: 100%;
+  background-color: #f6f6f6;
+}
+#TBar {
+  width: 60%;
+  height: 40px;
+  background-color: green;
+}
+
+#PPointer {
+  width: 60%;
+  height: 40px;
+  background-color: #f6f6f6;
+}
+#TPointer {
+  width: 0;
+  height: 40px;
+  background-color: #f6f6f6;
+}
+.arrow {
+    float: right;
+    height: 40px;
+    width: 40px;
+}

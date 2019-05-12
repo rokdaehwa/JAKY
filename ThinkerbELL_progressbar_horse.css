@@ -1,0 +1,42 @@
+#ProgressBar {
+  width: 80%;
+  background-color: white;
+}
+#Progress {
+  width: 100%;
+  background-color: white;
+}
+#myTime {
+  width: 100%;
+  background-color: grey;
+}
+#Time {
+  width: 100%;
+  background-color: white;
+}
+#TBar {
+  width: 60%;
+  height: 40px;
+  background-color: green;
+}
+
+#PPointer {
+  width: 60%;
+  height: 40px;
+  background-color: white;
+}
+#TPointer {
+  width: 0;
+  height: 40px;
+  background-color: white;
+}
+#man {
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+#horse {
+  width: 40px;
+  height: 40px;
+  float: right;
+}

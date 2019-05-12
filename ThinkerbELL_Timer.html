@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="./ThinkerbELL_Timer.css">
+  </head>
+  <body>
+    <div id="timer_body">
+        <div id="buttons">
+            <button class="ui primary button" id="start">
+              Start
+            </button>
+            <button class="ui primary button" id="stop">
+                Stop
+            </button>
+            <button class="ui primary button" id="restart">
+                Restart
+            </button>
+          </div>
+          <div class="ui right labeled input" id="input">
+            <label><img src="./clock2.png" id="clock"></label>
+            <input type="text" placeholder="Time (min)" id="time_input">
+          </div>
+          <div id="piechart"></div>
+    </div>
+
+    <script src="./ThinkerbELL_Timer.js"></script>
+  </body>
+</html>
