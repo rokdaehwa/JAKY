@@ -1,0 +1,38 @@
+hr.line {
+    width: 500px;
+    color: gray;
+    border: thin solid gray;
+}
+
+#tblTitle {
+  margin: 0 auto;
+}
+
+
+#tblList {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#tblAdd {
+  margin: 0 auto;
+}
+
+th {
+  padding: 10px;
+  font-size: 35px;
+  /* border-bottom: 1px solid black; */
+  font-weight: bold;
+}
+
+tr {
+  font-size: 30px;
+  text-align: center;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #c5c5c5;
+}
+
