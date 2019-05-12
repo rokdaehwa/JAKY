@@ -10,24 +10,33 @@
 
 firebase.initializeApp(firebaseConfig);
 function writeToDatabase(pr_name, script, table) {
-    console.log(origin_pr_name);
-    if (origin_pr_name == pr_name) {
-        firebase.database().ref('/JAKY/' + pr_name).remove();
-    }
-    var newKey = firebase.database().ref('/JAKY/' + pr_name).push();
-    newKey.set({
-        script: script,
-        index: 0
+    firebase.database().ref('/JAKY/').once('value', function (snapshot) {
+        var myValue = snapshot.val();
+        if (myValue != null) {
+            var keyList = Object.keys(myValue);
+            for (var i = 0; i < keyList.length; i++) {
+                var myKey = keyList[i];
+                if (myKey == pr_name) {
+                    firebase.database().ref('/JAKY/' + pr_name).remove();
+                }
+            }
+        }
     });
-    var i;
-    for (i = 1; i < table.rows.length; i++) {
-        newKey = firebase.database().ref('/JAKY/' + pr_name).push();
+    setTimeout(function () {
+        var newKey = firebase.database().ref('/JAKY/' + pr_name).push();
         newKey.set({
-            value: table.childNodes[i].childNodes[1].childNodes[0].nodeValue,
-            index: Number(i)
+            script: script,
+            index: 0
         });
-    }
-    origin_pr_name = pr_name;
+        var i;
+        for (i = 1; i < table.rows.length; i++) {
+            newKey = firebase.database().ref('/JAKY/' + pr_name).push();
+            newKey.set({
+                value: table.childNodes[i].childNodes[1].childNodes[0].nodeValue,
+                index: Number(i)
+            });
+        }
+    }, 1000);
 }
 function readFromDatabase() {
     firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
@@ -42,7 +51,6 @@ function readFromDatabase() {
                 if (myValue[myKey].index == 0) {
                     document.getElementById("draggable").innerHTML = myValue[myKey].script;
                     inputPr_name.value = parameter;
-                    origin_pr_name = parameter;
                 } else {
                     addRow(myValue[myKey].value, (myValue[myKey].index - 1));
                 }
@@ -199,7 +207,6 @@ if (location.search) {
     var paramIndex = parameter.indexOf("?");
     parameter = parameter.substring(paramIndex + 1);
 }
-var origin_pr_name;
 var inputIndex = document.getElementById("inputIndex");
 var beforetext = document.getElementById("draggable").innerHTML;
 var index_script = "";
