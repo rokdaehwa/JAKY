@@ -2,14 +2,8 @@
 team jaky
 
 ThinkerbELL_...
-html | function
------|-----
-login | user log in to ThinkerbEll
-list | lists of presentation
-script | can add/delete keywords from script
-
-|  <center>Header1</center> |  <center>Header2</center> |  <center>Header3</center> |
-|--------|--------|:--------|
-|**cell 1x1** | <center>cell 1x2 </center> |*cell 1x3* |
-|**cell 2x1** | <center>cell 2x2 </center> |*cell 2x3* |
-|**cell 3x1** | <center>cell 3x2 </center> |*cell 3x3* |
+|  <center>html</center> |  <center>function</center> |
+|--------|:--------|
+| login | user log in to ThinkerbEll |
+| list | lists of presentation |
+| script | can add/delete keywords from script |
