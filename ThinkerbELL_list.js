@@ -30,13 +30,24 @@ function readFromDatabase() {
 
 function addList(num, name) {
     console.log("add List..");
-    var row = tblList.insertRow(-1);
-    var col1 = row.insertCell(0);
-    var col2 = row.insertCell(1);
+    // var row = tblList.insertRow(-1);
+    // var col1 = row.insertCell(0);
+    // var col2 = row.insertCell(1);
     
-    col1.innerHTML = num;
-    col2.innerHTML = name;
+    // col1.innerHTML = num;
+    // col2.innerHTML = name;
     
+    var link = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_script?' + name;
+
+    $('#tblList').append(
+        $('<tr>').append(
+            $('<td>').append(num),
+            $('<td>').append(
+                $('<a>').prop('href', link).addClass('openMask').append(name)
+                // $('<div>').prop('href', link).addClass('openMask').append(name)
+            )
+        )
+    );
 }
 
 
@@ -47,3 +58,7 @@ function selectAction(name) {
 function startPresentation(name) {
     
 }
+
+
+
+
