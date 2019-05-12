@@ -115,7 +115,7 @@ function deleteRow(keywords, order) {
         var td = document.createElement("td");
         td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >";
         tableKeywords.childNodes[i].childNodes[2].appendChild(td.childNodes[0]);
-        tableKeywords.childNodes[i].childNodes[0].childNodes[0].innerHTML--;
+        tableKeywords.childNodes[i].childNodes[0].innerHTML--;
     }
     tableKeywords.childNodes[Number(order) + 1].remove();
 
