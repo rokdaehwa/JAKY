@@ -25,7 +25,7 @@ function writeToDatabase(pr_name, script, table) {
     }
 }
 function readFromDatabase() {
-    firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
+    firebase.database().ref('/JAKY/' + 'Autoshoes' + '/').once('value', function (snapshot) {
         initializeTable();
 
         var myValue = snapshot.val();
