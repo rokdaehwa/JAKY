@@ -1,11 +1,12 @@
 .area1{
     float:left;
     position:fixed;
-    left: 100px;
-    top:50px;
-    width:200px;
-    padding:250px;
+    left: 8%;
+    top:5%;
+    width:16%;
+    padding:15%;
     opacity:0;
+    background-color: blue;
     z-index:2;
 
 }
@@ -13,11 +14,12 @@
 .area2{
     float:left;
     position:fixed;
-    left:800px;
-    top:50px;
-    width:10px;
-    padding:250px;
+    left:54%;
+    top:5%;
+    width:10%;
+    padding:15%;
     opacity:0;
+    background-color: red;
     z-index: 2; 
     cursor: pointer; 
 }
@@ -26,10 +28,10 @@
     z-index:2;
     float:left;
     position:fixed;
-    width:500px;
+    width:32%;
     margin-top:6%;
     margin-left:15%;
-    padding: 140px;
+    padding: 10%;
     background-color:#EB8376;
     border: 20px solid grey;
     box-sizing: border-box;
@@ -41,13 +43,22 @@
     border-radius: 15px;
     }
 
+    
+    #arrowicon {
+        float:left;
+        position:fixed;
+        margin-left:52%;
+        margin-top:15%;
+    }
+    
+
 #rightbox {
     float:left;
     position:fixed;
-    left: 900px;
+    left: 63%;
     width:20%;
     margin-top:10%;
-    padding: 80px;
+    padding: 5%;
     border: 20px solid grey;
     background-color:#EBA393; 
     box-sizing: border-box;
@@ -60,20 +71,13 @@
     border-radius: 15px;
     }
 
-#arrowicon {
-    float:left;
-    position:fixed;
-    left:770px;
-    top:200px;
-}
-
 .progressbar{
     float:left;
     position:fixed;
-    width:650px;
-    top:520px;
-    left:400px;
-    padding:15px;
+    width:50%;
+    top:72%;
+    left:26.5%;
+    padding:1%;
     border: 20px solid grey;
     border-width:5px;
     z-index:3;
@@ -83,15 +87,15 @@
 #pointdown{
     float:left;
     position:fixed;
-    top:470px;
-    left:400px;
+    top:65%;
+    left:26%;
 }
 
 #pointup{
     float:left;
     position:fixed;
-    top:560px;
-    left:400px;
+    top:78%;
+    left:26%;
 }
 
 
@@ -99,8 +103,8 @@
     float: left;
     position:fixed;
     z-index:3;
-    left: 1050px;
-    top:30px;
+    left: 75%;
+    top:6%;
 }
 
 .canvas{
@@ -118,10 +122,10 @@
 .title{
     float:left;
     position:fixed;
-    left: 520px;
-    top: 200px;
+    left: 35%;
+    top: 35%;
     z-index:5;
-    font-size:60px;
+    font-size:400%;
     font-style:bold;
     text-align: center;
     color:white;
@@ -130,8 +134,8 @@
 .title2{
     float:left;
     position:fixed;
-    left: 300px;
-    top: 170px;
+    left: 22%;
+    top: 23%;
     z-index:6;
     font-size:40px;
     font-style:bold;
@@ -140,10 +144,9 @@
 }
 
 .title3{
-    float:left;
     position:fixed;
-    left: 900px;
-    top: 170px;
+    left: 62%;
+    top: 23%;
     z-index:6;
     font-size:40px;
     font-style:bold;
@@ -154,19 +157,19 @@
 .vertic{
     float:left;
     position:fixed;
-    width:0.2px;
-    left:820px;
+    width:0.1%;
+    left:55%;
     background-color:white;
-    height: 550px;
-    padding:2px;
+    height: 68%;
+    padding:0.1%;
     z-index: 6;
 }
 
 .title4{
     float:left;
     position:fixed;
-    left: 860px;
-    top: 140px;
+    left: 61%;
+    top: 18%;
     z-index:6;
     font-size:40px;
     font-style:bold;
@@ -177,8 +180,8 @@
 .title5{
     float:left;
     position:fixed;
-    left: 550px;
-    top: 400px;
+    left: 36%;
+    top: 56%;
     z-index:6;
     font-size:40px;
     font-style:bold;
@@ -190,8 +193,8 @@
     color:white;
     float:left;
     position:fixed;
-    left:960px;
-    top:75px;
+    left:62%;
+    top:10%;
     z-index:6;    
 }
 
@@ -199,8 +202,8 @@
     color:white;
     float:left;
     position:fixed;
-    left:480px;
-    top:440px;
+    left:31%;
+    top:61%;
     transform: rotate(-90deg);
     z-index:6; 
 }
