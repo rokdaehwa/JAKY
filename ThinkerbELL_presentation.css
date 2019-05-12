@@ -10,7 +10,7 @@ body {
     padding:250px;
     opacity:0;
     z-index:2;
-
+    cursor: pointer; 
 }
 
 .area2{
@@ -68,6 +68,22 @@ body {
     top:200px;
 }
 
+#cancel{
+    float:left;
+    position:fixed;
+    left:1150px;
+    top:30px;
+    color:red;
+}
 
-
-
+#small{
+    float:left;
+    position:fixed;
+    left:1150px;
+    top:30px;
+    background-color:blue;
+    z-index:5;
+    opacity:0;
+    padding:25px;
+    cursor: pointer; 
+}
