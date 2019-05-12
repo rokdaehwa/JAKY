@@ -23,7 +23,7 @@ area.onclick=function(){
 }
 
 popup.onclick=function(){
-    alert('1');
+    location.href='ThinkerbELL_list.html';
 }
 
 
