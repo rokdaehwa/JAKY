@@ -1,10 +1,10 @@
 # JAKY
 team jaky
 
-ThinkerbELL_...
+ThinkerbELL_(   ).html
 
 |  <center>html</center> |  <center>function</center> |
 |--------|:--------|
-| login | user log in to ThinkerbEll |
-| list | lists of presentation |
-| script | can add/delete keywords from script |
+| ThinkerbELL_login | user log in to ThinkerbEll |
+| ThinkerbELL_list | lists of presentation |
+| ThinkerbELL_script | can add/delete keywords from script |
