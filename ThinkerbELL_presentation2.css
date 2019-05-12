@@ -6,10 +6,10 @@ body {
     z-index:2;
     float:left;
     position:fixed;
-    width:900px;
+    width:60%;
     margin-top:6%;
     margin-left:17%;
-    padding: 140px;
+    padding: 10%;
     background-color:grey;
     border: 20px solid grey;
     box-sizing: border-box;
@@ -25,9 +25,10 @@ body {
     float:left;
     position:fixed;
     margin-top:6%;
-    width:1500px;
-    padding:200px;
-    opacity:0%;
+    width:80%;
+    padding:13%;
+    opacity:0;
+    background-color:red;
     z-index:2;
     }
 
@@ -41,8 +42,8 @@ body {
     font-size:23px;
     background-color:#FF4E44;
     text-align:center;
-    width:220px;
-    padding: 35px;
+    width:15%;
+    padding: 3%;
     z-index:3;
     -moz-border-radius: 15px;
     border-radius: 15px;
