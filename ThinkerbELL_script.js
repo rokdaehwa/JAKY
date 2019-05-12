@@ -236,12 +236,18 @@ function saveScript() {
 function switch_index(){
 
 }
+
+function startPresentation() {
+    divLoading.style.display = 'block';
+    location.href = 'ThinkerbELL_tutorial?' + parameter;
+}
 // JavaScript source code
 if (location.search) {
     var parameter = location.search;
     var paramIndex = parameter.indexOf("?");
     parameter = parameter.substring(paramIndex + 1);
 }
+
 var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
 var allTable = document.getElementById('allTable');
