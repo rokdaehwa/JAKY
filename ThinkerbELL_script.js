@@ -50,6 +50,7 @@ function readFromDatabase() {
                 var myKey = keyList[i];
                 if (myValue[myKey].index == 0) {
                     document.getElementById("draggable").innerHTML = myValue[myKey].script;
+                    beforetext = myValue[myKey].script;
                     inputPr_name.value = parameter;
                 } else {
                     addRow(myValue[myKey].value, (myValue[myKey].index - 1));
@@ -208,7 +209,6 @@ if (location.search) {
     parameter = parameter.substring(paramIndex + 1);
 }
 var inputIndex = document.getElementById("inputIndex");
-var beforetext = document.getElementById("draggable").innerHTML;
 var index_script = "";
 var allTable = document.getElementById('allTable');
 var inputPr_name = document.getElementById("inputPresentationname");
@@ -217,4 +217,5 @@ var btnEditscript = document.getElementById("btnEditscript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
+var beforetext;
 readFromDatabase();
