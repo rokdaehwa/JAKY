@@ -9,12 +9,22 @@
 };
 
 firebase.initializeApp(firebaseConfig);
-function writeToDatabase(keywords, index) {
-    var newKey = firebase.database().ref('/keywords/').push();
+function writeToDatabase(pr_name, script, table) {
+    var newKey = firebase.database().ref('/JAKY/').push();
     newKey.set({
-        value: keywords,
-        index: index
+        presentation_name: pr_name,
+        script: script,
+        index: -1
     });
+    var i;
+    for (i = 1; i < table.rows.length; i++) {
+        newKey = firebase.database().ref('/JAKY/').push();
+        newKey.set({
+            presentation_name : pr_name,
+            value: table.childNodes[i].childNodes[0].childNodes[0].nodeValue,
+            index: i
+        });
+    }
 }
 function readFromDatabase() {
     firebase.database().ref('/keywords/').once('value', function (snapshot) {
@@ -40,72 +50,100 @@ function initializeTable() {
 }
 function addRow(keywords, index) {
     var tr = document.createElement("TR");
+    var td0 = document.createElement("TD");
     var td1 = document.createElement("TD");
-    var td2 = document.createElement("TD");
-    td2.innerHTML = "<input type='button' value='Delete' class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >";
+    var td3 = document.createElement("TD");
+    var btn_index = document.createElement("button");
+    var text_index = document.createTextNode(index);
+    btn_index.appendChild(text_index);
+    td3.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >";
     td1.innerHTML = keywords;
+    td0.appendChild(btn_index);
     td1.style.color = "black";
+    td0.style.width = "10%";
+    tr.appendChild(td0);
     tr.appendChild(td1);
-    tr.appendChild(td2);
+    tr.appendChild(td3);
     tableKeywords.insertBefore(tr, tableKeywords.children[index]);
+}
+function deleteBtn(keywords, index) {
+    var td = document.createElement("TD");
+    td.innerHTML = "<input type='button' value='Delete' class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >";
+    var i = Number(index) + 1;
+    tableKeywords.childNodes[i].childNodes[2].remove();
+    tableKeywords.childNodes[i].appendChild(td);
 }
 function addKeywords() {
     var index = tableKeywords.children.length - 1;
     if (inputKeywords.value != "") {
-        writeToDatabase(inputKeywords.value, index);
         addRow(inputKeywords.value, index);
         inputKeywords.value = null;
+        inputKeywords.focus();
+    }
+}
+function Enter_Check() {
+    if (event.keyCode == 13) {
+        addKeywords();
     }
 }
 function deleteRow(keywords, order) {
-    firebase.database().ref('/keywords/').once('value', function (snapshot) {
-        var myValue = snapshot.val();
-        if (myValue != null) {
-            var keyList = Object.keys(myValue);
-            for (var i = 0; i < keyList.length; i++) {
-                var currentKey = keyList[i];
-                if (myValue[currentKey].value === keywords && myValue[currentKey].index == order) {
-                    firebase.database().ref('/keywords/' + currentKey).remove();
-                }
-                if (myValue[currentKey].index > order) {
-                    myValue[currentKey].index--;
-                }
-            }
-        }
-    });
-    for (var i = 1; i < tableKeywords.childNodes.length; i++) {
-        if (keywords === tableKeywords.childNodes[i].childNodes[0].childNodes[0].nodeValue && order == i - 1) {
-            tableKeywords.childNodes[i].remove();
-        }
+    for (var i = Number(order) + 2 ; i < tableKeywords.childNodes.length - 1; i++) {
+        tableKeywords.childNodes[i].childNodes[2].remove();
+        var td = document.createElement("TD");
+        td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >";
+        tableKeywords.childNodes[i].appendChild(td);
+        tableKeywords.childNodes[i].childNodes[0].childNodes[0].innerHTML--;
     }
+    tableKeywords.childNodes[Number(order) + 1].remove();
 
-}
-function browse() {
-    textareaScript.value = text;
-    var text_list = text.split(" ");
-    textareaScript.disabled = 'disabled';
 }
 function ableEditscript() {
     beforetext = textareaScript.value;
     textareaScript.disabled = '';
+    btnEditscript.disabled = 'disabled';
 }
-function selectText() {
-    var selectionText = "";
-    if (document.getSelection) {
-        selectionText = document.getSelection().toString();
+document.onclick = function () {
+    if (document.body.childNodes[document.body.childNodes.length - 1] != undefined) {
+        document.body.childNodes[document.body.childNodes.length - 1].remove();
     }
-    return selectionText;
-}
-document.onmouseup = function () {
-    if (selectText().length != 0) {
-        inputKeywords.value = selectText();
+    var sp = document.createElement('mark');
+    var selectionText = "";
+    var selection = document.getSelection();
+    if (selection) {
+        if (selection.rangeCount) {
+            selectionText = selection.toString();
+        }
+    }
+    if (selectionText.length != 0) {
+        var plus = document.createElement('button');
+        var plusText = document.createTextNode('+');
+        plus.appendChild(plusText);
+        plus.style.position = "absolute";
+        plus.onclick = function () {
+            var range = selection.getRangeAt(0).cloneRange()
+            range.surroundContents(sp)
+            selection.removeAllRanges();
+            selection.addRange(range);
+            addRow(selectionText, (tableKeywords.children.length - 1));
+            plus.remove();
+
+        };
+        var x = event.x;
+        var y = event.y;
+        plus.style.left = (x) + "px";
+        plus.style.top = (y) + "px";
+        document.body.appendChild(plus);
     }
 }
 function saveScript() {
     btnStart.disabled = "";
     textareaScript.disabled = 'disabled';
+    btnEditscript.disabled = '';
+    writeToDatabase(inputPr_name.value, textareaScript.value, tableKeywords);
 }
 // JavaScript source code
+var allTable = document.getElementById('allTable');
+var inputPr_name = document.getElementById("inputPresentationname");
 var btnStart = document.getElementById("btnStart");
 var beforetext = "";
 var btnEditscript = document.getElementById("btnEditscript");
@@ -113,4 +151,5 @@ var textareaScript = document.getElementById("textareaScript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
+textareaScript.value = text;
 readFromDatabase();
