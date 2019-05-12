@@ -77,6 +77,5 @@ function updatekeywords(mid){
 
 small.onclick=function(){
     console.log('1');
-    alert('go to list page');
-    //location.href='ThinkerbELL_presentation.script';
+    location.href='ThinkerbELL_list.html';
 }
