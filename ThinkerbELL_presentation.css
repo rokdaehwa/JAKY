@@ -102,6 +102,14 @@ body {
     padding:25px;
     cursor: pointer; 
 }
+#piechart {
+  left: 65%;
+  top: 6%;
+  position: fixed;
+  width: 10%;
+  height: 20%;  
+}
+
 #ProgressBar {
     width: 80%;
     background-color: white;
@@ -140,8 +148,8 @@ body {
     float: right;
   }
   #horse {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     float: right;
   }
   

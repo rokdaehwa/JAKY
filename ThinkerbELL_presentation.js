@@ -84,8 +84,10 @@ small.onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
 
-var T=10000;
+var T=10000; // From setting page
+var t=0;
 var P;
+var clock;
 var pwidth=0;
 var twidth=0;
 var tbar = document.getElementById("TBar"); 
@@ -93,27 +95,57 @@ var tpointer = document.getElementById("TPointer");
 var ppointer = document.getElementById("PPointer");
 var next = document.getElementById("next");
 
-function moveTBar() {
-    var id = setInterval(frame, 10);
+function time_manage() {
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(timer);
+
+    var time = setInterval(timer, 10);
+
     function frame() {
-      var dif = twidth - pwidth;
-      if (twidth >= 100) {
-        clearInterval(id);
-      } 
-      else {
-        twidth+=(1000/T); 
-        tbar.style.width = twidth + '%'; 
-        tpointer.style.width = twidth + '%';
-      }
-      if(dif>10){
-        tbar.style.backgroundColor = 'red';
-      }
-      else if(dif<-10){
-        tbar.style.backgroundColor = '#e5e500';
-      }
-      else{
-        tbar.style.backgroundColor = 'green';
-      }
+    }
+    function timer(){
+      var data = google.visualization.arrayToDataTable([
+              ['Time', 'Percentage'],
+              ['Spent',      t],
+              ['Remaining',T-t],
+            ]);
+    
+            var options = {
+              title: 'Timer',
+              colors: ['white','red'],
+              legend: 'none',
+              pieSliceText: 'none',
+              pieSliceBorderColor: 'black',
+              chartArea: {left: '5%', top: '5%', width: '90%', height: '90%'}
+            };
+    
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+    
+            if(t>=T){
+              clearInterval(time);
+              alert("Time Done");
+            }
+            else{t+=10;}
+
+            var dif = twidth - pwidth;
+            if (twidth >= 100) {
+              clearInterval(time);
+            } 
+            else {
+              twidth+=(1000/T); 
+              tbar.style.width = twidth + '%'; 
+              tpointer.style.width = twidth + '%';
+            }
+            if(dif>10){
+              tbar.style.backgroundColor = 'red';
+            }
+            else if(dif<-10){
+              tbar.style.backgroundColor = '#e5e500';
+            }
+            else{
+              tbar.style.backgroundColor = 'green';
+            }        
     }
   }
-  moveTBar();
+  time_manage();
