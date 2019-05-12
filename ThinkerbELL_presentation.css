@@ -4,38 +4,42 @@ body {
 .area1{
     float:left;
     position:fixed;
-    left: 100px;
-    top:50px;
-    width:200px;
-    padding:250px;
+    left: 11%;
+    top:10%;
+    width:13%;
+    padding:16%;
     opacity:0;
     z-index:2;
+    background-color:blue;
     cursor: pointer; 
 }
 
 .area2{
     float:left;
     position:fixed;
-    left:800px;
-    top:50px;
-    width:10px;
-    padding:250px;
+    left:56%;
+    top:10%;
+    width:7%;
+    padding:15%;
     opacity:0;
     z-index: 2; 
+    background-color:red;
     cursor: pointer; 
 }
 #leftbox {
     z-index:2;
     float:left;
     position:fixed;
-    width:500px;
+    width:32%;
+    height:6%;
     margin-top:6%;
     margin-left:15%;
-    padding: 140px;
+    margin-bottom:15%;
+    padding:12%;
     background-color:#EB8376;
-    border: 20px solid grey;
+    border:solid grey;
     box-sizing: border-box;
-    border-width: 5px;
+    border-width:5px;
     font-size:50px;
     font-weight:bold;
     text-align:center;
@@ -45,10 +49,10 @@ body {
 #rightbox {
     float:left;
     position:fixed;
-    left: 900px;
+    left: 63%;
     width:20%;
-    margin-top:10%;
-    padding: 80px;
+    margin-top:13%;
+    padding:4%;
     border: 20px solid grey;
     background-color:#EBA393; 
     box-sizing: border-box;
@@ -64,23 +68,23 @@ body {
 #arrowicon {
     float:left;
     position:fixed;
-    left:770px;
-    top:200px;
+    margin-left:52%;
+    margin-top:15%;
 }
 
 #cancel{
     float:left;
     position:fixed;
-    left:1150px;
-    top:30px;
+    left:77%;
+    top:4%;
     color:red;
 }
 
 #small{
     float:left;
     position:fixed;
-    left:1150px;
-    top:30px;
+    left:77%;
+    top:4%;
     background-color:blue;
     z-index:5;
     opacity:0;
