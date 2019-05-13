@@ -94,7 +94,7 @@ small.onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
 
-var T=10000; // From setting page
+var T=60000; // From setting page
 var t=0;
 var P;
 var clock;
