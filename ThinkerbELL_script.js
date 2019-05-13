@@ -239,7 +239,7 @@ function switch_index(){
 
 function startPresentation() {
     divLoading.style.display = 'block';
-    location.href = 'ThinkerbELL_tutorial?' + parameter;
+    location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_script?' + parameter;
 }
 // JavaScript source code
 if (location.search) {
