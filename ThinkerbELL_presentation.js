@@ -44,7 +44,12 @@ var mid=[];
             //writeToFB(index);
             console.log(mid);
             updatekeywords(mid);
-            pwidth -= (100/P);
+            if(pwidth<=0){
+              pwidth=0;
+            }
+            else{
+              pwidth -= (100/P);
+            }
             ppointer.style.width = pwidth + '%';
         }
         area2.onclick=function(){
@@ -54,7 +59,12 @@ var mid=[];
             //deleteFB();
             //writeToFB(index);
             updatekeywords(mid);
-            pwidth += (100/P);
+            if(pwidth>=100){
+              pwidth=100; 
+            }
+            else{
+              pwidth += (100/P);
+            }
             ppointer.style.width = pwidth + '%';
         }
     })
