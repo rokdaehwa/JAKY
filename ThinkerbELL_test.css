@@ -18,10 +18,10 @@ body {
     border-width:5px;
     font-size:50px;
     font-weight:bold;
-    text-align:center;
     -moz-border-radius: 15px;
     border-radius: 15px;
     text-align: center;
+    height: 80%;
     }
 #rightbox {
     border: 20px solid grey;
@@ -30,10 +30,10 @@ body {
     border-width:5px;
     font-size:30px;
     font-weight: bold;
-    text-align:center;
     -moz-border-radius: 15px;
     border-radius: 15px;
     text-align: center;
+    height: 50%;
     }
 #area1 {
     z-index: 2;
