@@ -1,7 +1,7 @@
 ﻿
 var divLoading = document.getElementById('divLoading');
 divLoading.style.display = 'none';
-
+var parameter = "";
 var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
 var allTable = document.getElementById('allTable');
@@ -259,7 +259,7 @@ function startPresentation() {
 
 $(document).ready(function() {
     if (location.search) {
-      var parameter = location.search;
+      parameter = location.search;
       var paramIndex = parameter.indexOf("?");
        parameter = parameter.substring(paramIndex + 1);
     }
