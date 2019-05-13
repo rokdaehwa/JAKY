@@ -1,4 +1,18 @@
-﻿var firebaseConfig = {
+﻿
+var divLoading = document.getElementById('divLoading');
+divLoading.style.display = 'none';
+
+var inputIndex = document.getElementById("inputIndex");
+var index_script = "";
+var allTable = document.getElementById('allTable');
+var inputPr_name = document.getElementById("inputPresentationname");
+var btnStart = document.getElementById("btnStart");
+var btnEditscript = document.getElementById("btnEditscript");
+var btnAddkeywords = document.getElementById("btnAddkeywords");
+var tableKeywords = document.getElementById("tableKeywords");
+var inputKeywords = document.getElementById("inputKeywords");
+var beforetext;
+var firebaseConfig = {
     apiKey: "AIzaSyB8AwRXeTAYHOZC9lB6KY99UM45CgzxGqM",
     authDomain: "jaky-97cf5.firebaseapp.com",
     databaseURL: "https://jaky-97cf5.firebaseio.com",
@@ -242,22 +256,13 @@ function startPresentation() {
     location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_tutorial?' + parameter;
 }
 // JavaScript source code
-if (location.search) {
-    var parameter = location.search;
-    var paramIndex = parameter.indexOf("?");
-    parameter = parameter.substring(paramIndex + 1);
-}
-divLoading.style.display = 'none';
 
-var divLoading = document.getElementById('divLoading');
-var inputIndex = document.getElementById("inputIndex");
-var index_script = "";
-var allTable = document.getElementById('allTable');
-var inputPr_name = document.getElementById("inputPresentationname");
-var btnStart = document.getElementById("btnStart");
-var btnEditscript = document.getElementById("btnEditscript");
-var btnAddkeywords = document.getElementById("btnAddkeywords");
-var tableKeywords = document.getElementById("tableKeywords");
-var inputKeywords = document.getElementById("inputKeywords");
-var beforetext;
-readFromDatabase();
+$(document).ready(function() {
+    if (location.search) {
+      var parameter = location.search;
+      var paramIndex = parameter.indexOf("?");
+       parameter = parameter.substring(paramIndex + 1);
+    }
+    readFromDatabase();
+});
+
