@@ -31,7 +31,7 @@ function writeToDatabase(pr_name, script, table) {
             for (var i = 0; i < keyList.length; i++) {
                 var myKey = keyList[i];
                 if (myKey == pr_name) {
-                    firebase.database().ref('/JAKY/' + pr_name).remove();
+                    //firebase.database().ref('/JAKY/' + pr_name).remove();
                 }
             }
         }
