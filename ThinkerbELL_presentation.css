@@ -103,9 +103,9 @@ body {
 }
 #piechart {
   left: 67%;
-  top: 2%;
+  top:1%;
   position: fixed;
-  width: 10%;
+  width: 8%;
   height: 20%;  
 }
 
