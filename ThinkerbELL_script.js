@@ -247,7 +247,9 @@ if (location.search) {
     var paramIndex = parameter.indexOf("?");
     parameter = parameter.substring(paramIndex + 1);
 }
+divLoading.style.display = 'none';
 
+var divLoading = document.getElementById('divLoading');
 var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
 var allTable = document.getElementById('allTable');
