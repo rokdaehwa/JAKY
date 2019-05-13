@@ -229,7 +229,7 @@ document.getElementById("draggable").onclick = function () {
         var x = event.x;
         var y = event.y;
         plus.style.left = (x) + "px";
-        plus.style.top = (Number(y) + 100) + "px";
+        plus.style.top = (Number(y)) + "px";
         document.body.appendChild(plus);
 
     }
