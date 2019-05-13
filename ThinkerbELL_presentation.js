@@ -86,6 +86,7 @@ function updatekeywords(mid){
         rightbox.style.backgroundColor="grey";
         return;
     }
+    rightbox.style.backgroundColor='#EBA393';
     rightbox.innerHTML=mid[newkey2];
 
 }
