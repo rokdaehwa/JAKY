@@ -216,7 +216,7 @@ document.getElementById("draggable").onclick = function () {
         var y = event.y;
         console.log(y);
         plus.style.left = (x) + "px";
-        plus.style.top = (Number(y) + 15) + "px";
+        plus.style.top = (Number(y) + 100) + "px";
         document.body.appendChild(plus);
 
     }
