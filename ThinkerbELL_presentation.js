@@ -97,13 +97,11 @@ small.onclick=function(){
 var T=60000; // From setting page
 var t=0;
 var P;
-var clock;
 var pwidth=0;
 var twidth=0;
 var tbar = document.getElementById("TBar"); 
 var tpointer = document.getElementById("TPointer");
 var ppointer = document.getElementById("PPointer");
-var next = document.getElementById("next");
 
 function time_manage() {
   google.charts.load('current', {'packages':['corechart']});
