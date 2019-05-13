@@ -42,10 +42,7 @@ body {
     z-index: 2;
 }
 #arrowicon {
-    /* float:left; */
-    /* position: relative; */
-    /* margin-left:52%;
-    margin-top:15%; */
+    width: 80%;
 }
 
 #cancel{
