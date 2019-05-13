@@ -10,7 +10,7 @@ body {
     left: 10%;
     position: fixed;
     height: 20%;
-    top: 70%;
+    top: 75%;
 }
 .area1{
     float:left;
@@ -41,19 +41,18 @@ body {
     z-index:2;
     float:left;
     position:fixed;
-    width:32%;
-    height:6%;
+    width:30%;
     margin-top:6%;
-    margin-left:15%;
-    margin-bottom:15%;
-    padding:12%;
+
+    left:15%;
+    padding:6%;
     background-color:#EB8376;
-    border:solid grey;
+    border:20px solid grey;
     box-sizing: border-box;
     border-width:5px;
     font-size:50px;
     font-weight:bold;
-    text-align:center;
+    text-align: left;
     -moz-border-radius: 15px;
     border-radius: 15px;
     }
@@ -62,7 +61,7 @@ body {
     position:fixed;
     left: 63%;
     width:20%;
-    margin-top:13%;
+    margin-top:9%;
     padding:4%;
     border: 20px solid grey;
     background-color:#EBA393; 
@@ -71,7 +70,7 @@ body {
     z-index:1;
     font-size:30px;
     font-weight: bold;
-    text-align:center;
+    text-align:left;
     -moz-border-radius: 15px;
     border-radius: 15px;
     }
@@ -79,8 +78,8 @@ body {
 #arrowicon {
     float:left;
     position:fixed;
-    margin-left:52%;
-    margin-top:15%;
+    margin-left:50%;
+    margin-top:12%;
 }
 
 #cancel{
@@ -103,8 +102,8 @@ body {
     cursor: pointer; 
 }
 #piechart {
-  left: 65%;
-  top: 6%;
+  left: 67%;
+  top: 2%;
   position: fixed;
   width: 10%;
   height: 20%;  
