@@ -53,7 +53,10 @@ canvas.onclick=function(){
     return;
  }
  if(counter==2){
-   location.href='./ThinkerbELL_presentation.html';
+   parameter = location.search;
+   var paramIndex = parameter.indexOf("?");
+   parameter = parameter.substring(paramIndex + 1);
+   location.href='./ThinkerbELL_presentation.html?'+parameter;
    return;
  }
 }
