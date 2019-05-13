@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ThinkerbELL</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="./ThinkerbELL_presentation.css" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="semantic/semantic.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="semantic/semantic.js"></script>
+  </head>
+<body>
+    <div class="ui grid" id="main">
+      <div class="four wide column" id='leftbox'></div>
+      <i class="fas fa-angle-double-right" id='arrowicon' style="font-size: 850%;"></i>
+      <div id='rightbox'></div>
+      <i class="far fa-times-circle" id='cancel' style="font-size:300%"></i>
+      <div class="four wide column" id='small'></div>
+      <div class="four wide column" id='area1'></div>
+      <div class="four wide column" id='area2'></div>
+    </div>
+
+  <div id="bar">
+    <div id="Progress">
+      <div id="PPointer">
+          <img id="man" src="./running_man.gif" style="transform: translateX(20px);">
+      </div>
+  </div>
+  <div id="myTime">
+      <div id="TBar"></div>
+  </div>
+  <div id="Time">
+      <div id="TPointer">
+          <img id="horse" src="./running_horse.gif" style="transform: translateX(40px);">
+      </div>
+  </div>
+  </div>
+
+  <div id="piechart"></div>
+
+    <script src="./ThinkerbELL_presentation.js"></script>
+  </body>
+</html>
+</html>
