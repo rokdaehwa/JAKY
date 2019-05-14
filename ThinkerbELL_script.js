@@ -281,6 +281,7 @@ $(document).ready(function() {
        parameter = parameter.substring(paramIndex + 1);
     }
     parameter.replace("%20", " ");
+    parameter.replace("%27", "'");
     readFromDatabase();
     document.body.childNodes[1].onclick = function () {
         divLoading.style.display = 'block';
