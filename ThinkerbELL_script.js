@@ -280,8 +280,8 @@ $(document).ready(function() {
       var paramIndex = parameter.indexOf("?");
        parameter = parameter.substring(paramIndex + 1);
     }
-    parameter = parameter.replace("%20", " ");
-    parameter = parameter.replace("%27", "'");
+    parameter = parameter.replace(/%20/gi, " ");
+    parameter = parameter.replace(/%27/gi, "'");
     readFromDatabase();
     document.body.childNodes[1].onclick = function () {
         divLoading.style.display = 'block';
