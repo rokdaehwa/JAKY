@@ -11,6 +11,11 @@ var btnEditscript = document.getElementById("btnEditscript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
+var divStart = document.getElementById("start");
+var divLoading = document.getElementById('loading');
+var dropdown = document.getElementById('inbox');
+var setting=document.getElementById('setting');
+var cancel=document.getElementById('cancel');
 var beforetext;
 var firebaseConfig = {
     apiKey: "AIzaSyB8AwRXeTAYHOZC9lB6KY99UM45CgzxGqM",
@@ -287,5 +292,25 @@ $(document).ready(function() {
         divLoading.style.display = 'block';
         location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
     };
+    divLoading.style.display = 'none';
+    setting.style.display='none';
+
+    divStart.onclick = function(){
+        divLoading.style.display = 'block';
+        var parameter2=inbox.value;
+        console.log(parameter2);
+        var parameter = location.search;
+        var paramIndex = parameter.indexOf("?");
+        parameter = parameter.substring(paramIndex + 1);
+        location.href='./ThinkerbELL_tutorial.html?'+parameter+'?'+parameter2;
+    }
+
+    btnStart.onclick=function(){
+        setting.style.display='block';
+    }
+
+    cancel.onclick=function(){
+        setting.style.display='none';
+    }
 });
 
