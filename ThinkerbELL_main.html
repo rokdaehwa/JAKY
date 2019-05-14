@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ThinkerbELL</title>
+    <link href="./ThinkerbELL_main.css" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="semantic/semantic.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="semantic/semantic.js"></script>
+</head>
+<body>
+    <div class="ui grid" id="display">
+        <div class="two wide column"></div>
+        <div class="six wide column">
+            <div class="textbox" id="leftbox"></div>
+        </div>
+        <div class="column" id="arrowiconbox">
+            <table id="arrowtable">
+                <td><img src="./presentation_arrow.svg" id='arrowicon'></td>
+            </table>
+        </div>
+        <div class="four wide column" id="rightboxcontainer">
+            <div id="clock">
+                <div id="piechart"></div>
+            </div>
+            <div class="textbox" id="rightbox"></div>
+        </div>
+        <div class="column">
+            <img src="./close_icon.svg" id='closeicon'>
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <div id="bar">
+        <div id="Progress">
+              <div id="PPointer">
+                  <img id="man" src="./running_man.gif" style="transform: translateX(20px);">
+              </div>
+          </div>
+          <div id="myTime">
+              <div id="TBar"></div>
+          </div>
+          <div id="Time">
+              <div id="TPointer">
+                  <img id="horse" src="./running_horse.gif" style="transform: translateX(40px);">
+              </div>
+          </div>
+    </div>
+    
+    <div id="area1"></div>
+    <div id="area2"></div>
+
+    <script src="./ThinkerbELL_main.js"></script>
+</body>
+</html>

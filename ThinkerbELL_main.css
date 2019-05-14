@@ -1,0 +1,135 @@
+#display {
+  width: 100%;
+  height: 50%;
+  margin: auto;
+  margin-top: 5%;
+}
+.textbox {
+  font-weight:bold;
+  text-align: center;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+#leftbox {
+  height: 100%;
+  background-color:#EB8376;
+  border:solid grey;
+  box-sizing: border-box;
+  border-width:5px;
+  border-radius: 15px;
+
+  font-size: 50px;
+  line-height: 50px;
+}
+#rightboxcontainter {
+  height: 100%;
+}
+#clock {
+  height:30%;
+  text-align: center;
+}
+#rightbox {
+  height: 60%;
+  background-color:#EB8376;
+  border:solid grey;
+  box-sizing: border-box;
+  border-width:5px;
+  border-radius: 15px;
+
+  font-size:30px;
+  line-height: 30px;
+}
+#arrowiconbox {
+  height: 100%;
+}
+#arrowtable {
+  height:100%;
+}
+#arrowicon {
+    width: 100%;
+    text-align: center;
+}
+#closeicon {
+  width: 50%;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+
+#bar {
+    width: 70%;
+    height: 20%;
+    margin: auto;
+    margin-top: 2%;
+}
+#ProgressBar {
+    width: 100%;
+    background-color: white;
+    margin: auto;
+}
+#Progress {
+  width: 100%;
+  background-color: white;
+}
+#myTime {
+  width: 100%;
+  background-color: grey;
+}
+#Time {
+  width: 100%;
+  background-color: white;
+}
+#TBar {
+  width: 0%;
+  height: 40px;
+  background-color: green;
+}
+
+#PPointer {
+  width: 0%;
+  height: 40px;
+  background-color: white;
+}
+#TPointer {
+  width: 0;
+  height: 40px;
+  background-color: white;
+}
+#man {
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+#horse {
+  width: 80px;
+  height: 80px;
+  float: right;
+}
+#piechart {
+  width: 80%;
+  height: 100%;
+  float: right;
+  transform: scale(1.5) translate(0%,-30%); 
+}
+
+#area1 {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+#area2 {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+}
