@@ -3,6 +3,7 @@ var area2=document.getElementById("area2");
 
 var index=0;
 var mid=[];
+var parameter2;
 
 var firebaseConfig = {
     apiKey: "AIzaSyB8AwRXeTAYHOZC9lB6KY99UM45CgzxGqM",
@@ -18,10 +19,9 @@ var firebaseConfig = {
   loadDatafromFirebase();
   
   function loadDatafromFirebase(){
-    var location=window.location.href;
-    var questionindex=location.indexOf('?');
-    //var parameter=location.substring(questionindex+1);
-    var parameter = 'Autoshoes';
+    var indexstring=location.split('?');
+    var parameter=indexstring[1];
+    parameter2=indexstring[2];
     return firebase.database().ref('JAKY/'+parameter).once('value', function(snapshot) {
         var myKey = snapshot.key;
         var myValue = snapshot.val();
@@ -97,7 +97,7 @@ document.getElementById("closeicon").onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
 
-var T=60000; // From setting page
+var T=60000*parameter2; // From setting page
 var t=0;
 var P;
 var pwidth=0;
