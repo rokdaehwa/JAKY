@@ -94,12 +94,12 @@
 
 #PPointer {
   width: 0%;
-  height: 40px;
+  height: 60px;
   background-color: white;
 }
 #TPointer {
   width: 0;
-  height: 40px;
+  height: 80px;
   background-color: white;
 }
 #man {
