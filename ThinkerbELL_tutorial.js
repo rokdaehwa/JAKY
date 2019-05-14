@@ -56,7 +56,7 @@ canvas.onclick=function(){
    var parameter = location.search;
    var paramIndex = parameter.indexOf("?");
    parameter = parameter.substring(paramIndex + 1);
-   location.href='./ThinkerbELL_presentation.html?'+parameter;
+   location.href='./ThinkerbELL_main.html?'+parameter;
    return;
  }
 }
