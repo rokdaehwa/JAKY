@@ -280,6 +280,8 @@ function startPresentation() {
 // JavaScript source code
 
 $(document).ready(function() {
+    divLoading.style.display = 'none';
+    setting.style.display='none';
     if (location.search) {
       parameter = location.search;
       var paramIndex = parameter.indexOf("?");
@@ -292,8 +294,6 @@ $(document).ready(function() {
         divLoading.style.display = 'block';
         location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
     };
-    divLoading.style.display = 'none';
-    setting.style.display='none';
 
     divStart.onclick = function(){
         divLoading.style.display = 'block';
