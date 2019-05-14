@@ -28,14 +28,10 @@ function writeToDatabase(pr_name, script, table) {
         var myValue = snapshot.val();
         if (myValue != null) {
             var keyList = Object.keys(myValue);
-            for (var i = 0; i < keyList.length; i++) {
-                var myKey = keyList[i];
-                if (myKey == pr_name) {
-                    //firebase.database().ref('/JAKY/' + pr_name).remove();
-                }
-            }
+            firebase.database().ref('/JAKY/' + parameter).remove();
         }
     });
+    divLoading.style.display = 'block';
     setTimeout(function () {
         var newKey = firebase.database().ref('/JAKY/' + pr_name).push();
         newKey.set({
@@ -50,6 +46,7 @@ function writeToDatabase(pr_name, script, table) {
                 index: Number(i)
             });
         }
+        divLoading.style.display = 'none';
     }, 1000);
 }
 function readFromDatabase() {
@@ -133,7 +130,26 @@ function change_index(text_index) {
             }
         }
     };
-
+    document.getElementById("draggable").onclick = function () {
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(node);
+    };
+    allTable.childNodes[1].childNodes[0].onclick = function () {
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(node);
+    };
+    allTable.childNodes[1].childNodes[2].childNodes[1].onclick = function () {
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(node);
+    };
+    allTable.childNodes[1].childNodes[4].childNodes[1].onclick = function () {
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(node);
+    };
+    allTable.childNodes[1].childNodes[8].onclick = function () {
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(node);
+    };
 }
 function deleteBtn(keywords, index) {
     var td = document.createElement("TD");
@@ -246,9 +262,6 @@ function saveScript() {
     if (textareaScript != null) {
         textareaScript.remove();
     }
-}
-function switch_index(){
-
 }
 
 function startPresentation() {
