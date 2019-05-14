@@ -61,7 +61,7 @@ var firebaseConfig = {
             ppointer.style.width = pwidth + '%';
         }
         document.addEventListener("keyup", function(event) {
-            if (event.keyCode === 37||event.keyCode==40||event.keyCode==80){
+            if (event.keyCode === 37||event.keyCode==40||event.keyCode==80||event.keyCode==8){
             event.preventDefault();
             area1.click();
             }
