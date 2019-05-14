@@ -19,6 +19,7 @@ var firebaseConfig = {
   loadDatafromFirebase();
   
   function loadDatafromFirebase(){
+    var location=window.location.href;
     var indexstring=location.split('?');
     var parameter=indexstring[1];
     parameter2=indexstring[2];
