@@ -12,7 +12,6 @@ var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
 var divStart = document.getElementById("start");
-var divLoading = document.getElementById('loading');
 var dropdown = document.getElementById('inbox');
 var setting=document.getElementById('setting');
 var cancel=document.getElementById('cancel');
@@ -280,7 +279,6 @@ function startPresentation() {
 // JavaScript source code
 
 $(document).ready(function() {
-    divLoading.style.display = 'none';
     setting.style.display='none';
     if (location.search) {
       parameter = location.search;
