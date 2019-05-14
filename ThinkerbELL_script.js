@@ -28,12 +28,14 @@ function writeToDatabase(pr_name, script, table) {
         var myValue = snapshot.val();
         if (myValue != null) {
             var keyList = Object.keys(myValue);
-            firebase.database().ref('/JAKY/' + parameter).remove();
+            if (parameter != "") {
+                firebase.database().ref('/JAKY/' + parametera + '/').remove();
+            }
         }
     });
     divLoading.style.display = 'block';
     setTimeout(function () {
-        var newKey = firebase.database().ref('/JAKY/' + pr_name).push();
+        var newKey = firebase.database().ref('/JAKY/' + pr_name + '/').push();
         newKey.set({
             script: script,
             index: 0
@@ -50,25 +52,27 @@ function writeToDatabase(pr_name, script, table) {
     }, 1000);
 }
 function readFromDatabase() {
-    firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
-        initializeTable();
+    if (parameter != "") {
+        firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
+            initializeTable();
 
-        var myValue = snapshot.val();
-        if (myValue != null) {
-            var keyList = Object.keys(myValue);
+            var myValue = snapshot.val();
+            if (myValue != null) {
+                var keyList = Object.keys(myValue);
 
-            for (var i = 0; i < keyList.length; i++) {
-                var myKey = keyList[i];
-                if (myValue[myKey].index == 0) {
-                    document.getElementById("draggable").innerHTML = myValue[myKey].script;
-                    beforetext = myValue[myKey].script;
-                    inputPr_name.value = parameter;
-                } else {
-                    addRow(myValue[myKey].value, (myValue[myKey].index - 1));
+                for (var i = 0; i < keyList.length; i++) {
+                    var myKey = keyList[i];
+                    if (myValue[myKey].index == 0) {
+                        document.getElementById("draggable").innerHTML = myValue[myKey].script;
+                        beforetext = myValue[myKey].script;
+                        inputPr_name.value = parameter;
+                    } else {
+                        addRow(myValue[myKey].value, (myValue[myKey].index - 1));
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 }
 function initializeTable() {
     var numRows = tableKeywords.rows.length;
