@@ -281,5 +281,9 @@ $(document).ready(function() {
        parameter = parameter.substring(paramIndex + 1);
     }
     readFromDatabase();
+    document.body.childNodes[1].onclick = function () {
+        divLoading.style.display = 'block';
+        location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
+    };
 });
 
