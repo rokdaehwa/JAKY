@@ -14,7 +14,7 @@ var inputKeywords = document.getElementById("inputKeywords");
 var divStart = document.getElementById("start");
 var divLoading = document.getElementById('loading');
 var dropdown = document.getElementById('inbox');
-var setting=document.getElementById('setting');
+var setting;
 var cancel=document.getElementById('cancel');
 var beforetext;
 var firebaseConfig = {
@@ -280,6 +280,8 @@ function startPresentation() {
 // JavaScript source code
 
 $(document).ready(function() {
+    setting=document.getElementById('setting');
+    setting.style.display='none';
     if (location.search) {
       parameter = location.search;
       var paramIndex = parameter.indexOf("?");
@@ -292,9 +294,6 @@ $(document).ready(function() {
         divLoading.style.display = 'block';
         location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
     };
-    divLoading.style.display = 'none';
-    setting.style.display='none';
-
     divStart.onclick = function(){
         divLoading.style.display = 'block';
         var parameter2=inbox.value;
