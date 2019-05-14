@@ -88,6 +88,7 @@ function updatekeywords(mid){
         rightbox.style.backgroundColor="grey";
         return;
     }
+    rightbox.style.backgroundColor='#EBA393';
     rightbox.innerHTML=mid[newkey2];
 
 }
@@ -135,6 +136,7 @@ function time_manage() {
             if(t>=T){
               clearInterval(time);
               alert("Time Done");
+              location.href='ThinkerbELL_presentation2.html';
             }
             else{t+=10;}
 
