@@ -29,7 +29,7 @@ function writeToDatabase(pr_name, script, table) {
         if (myValue != null) {
             var keyList = Object.keys(myValue);
             if (parameter != "") {
-                firebase.database().ref('/JAKY/' + parametera + '/').remove();
+                firebase.database().ref('/JAKY/' + parameter + '/').remove();
             }
         }
     });
@@ -280,6 +280,7 @@ $(document).ready(function() {
       var paramIndex = parameter.indexOf("?");
        parameter = parameter.substring(paramIndex + 1);
     }
+    parameter.replace("%20", " ");
     readFromDatabase();
     document.body.childNodes[1].onclick = function () {
         divLoading.style.display = 'block';
