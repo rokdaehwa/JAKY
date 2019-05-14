@@ -20,7 +20,8 @@ var firebaseConfig = {
   function loadDatafromFirebase(){
     var location=window.location.href;
     var questionindex=location.indexOf('?');
-    var parameter=location.substring(questionindex+1);
+    //var parameter=location.substring(questionindex+1);
+    var parameter = 'Autoshoes';
     return firebase.database().ref('JAKY/'+parameter).once('value', function(snapshot) {
         var myKey = snapshot.key;
         var myValue = snapshot.val();
@@ -59,6 +60,15 @@ var firebaseConfig = {
             }
             ppointer.style.width = pwidth + '%';
         }
+        document.addEventListener("keyup", function(event) {
+            if (event.keyCode === 37||event.keyCode==40||event.keyCode==80){
+            event.preventDefault();
+            area1.click();
+            }
+            if(event.keyCode===32||event.keyCode==78||event.keyCode==38||event.keyCode==39||event.keyCode==13){
+                event.preventDefault();
+                area2.click();  
+          }});
     })
 }
 
