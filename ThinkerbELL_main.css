@@ -1,8 +1,10 @@
+#margin {
+  height: 10%;
+}
 #display {
   width: 100%;
   height: 50%;
   margin: auto;
-  margin-top: 5%;
 }
 .textbox {
   font-weight:bold;
