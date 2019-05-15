@@ -92,7 +92,12 @@
     <div id='divLoading'><img id='imgLoading' src='./loading_deer.gif' alt='Loading...' /></div>
     <div id="setting">
         <div id="start_presentation">
-            Start presentation
+            <h2 class="ui header" style="width: 50%;">
+                <i class="settings icon"></i>
+                <div class="content">
+                  Settings
+                </div>
+            </h2>
         </div>
         <div id="title">
         </div>
@@ -100,28 +105,34 @@
             Set time
         </div>
         <div id="dropdown">
-            <input type="text" id="inbox" placeholder="Time (min)">
+            <div class="ui right labeled input" style="width: 80%;">
+                <label for="timeinput" class="ui label" style="width: 20%;">
+                    <i class="clock outline icon" style="transform: scale(1.5)"></i>
+                </label>
+                <input type="text" placeholder="Time" id="timeinput" style="width: 60%;">
+                <div class="ui basic label">min</div>
+            </div>
         </div>
-        <div id="line">
-        </div>
-        <div class="option_text" style="margin-top: 20px;">
+        <div class="option_text">
             Time Manage
         </div>
         <div class="show_text">
-            <label>Show status bar</label>
-            <input type="checkbox" class="check" checked="">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" checked="" name="public">
+                <label>Show status bar</label>
+            </div>
         </div>
         <div class="show_text">
-            <label>Show time clock</label>
-            <input type="checkbox" class="check" checked="">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" checked="" name="public">
+                <label>Show time clock</label>
+            </div>
         </div>
         <table id="button">
             <tr>
                 <td class="button_in">
-                    <button class="ui button" id="cancel" style="cursor: pointer">Cancel</button>
-                </td>
-                <td class="button_in">
-                    <button class="ui primary button" id="start" style="cursor: pointer">Start</button>
+                    <button class="ui left attached button" id="cancel" style="cursor: pointer; width: 40%; text-align: center;">Cancel</button>
+                    <button class="primary right attached ui button" id="start" style="cursor: pointer; width: 40%; text-align: center;">Start</button>
                 </td>
             </tr>
         </table>
