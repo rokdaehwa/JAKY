@@ -46,7 +46,7 @@ function writeToDatabase(pr_name, script, table) {
         });
         var i;
         for (i = 1; i < table.rows.length; i++) {
-            newKey = firebase.database().ref('/JAKY/' + pr_name).push();
+            newKey = firebase.database().ref('/JAKY/' + pr_name + '/').push();
             newKey.set({
                 value: table.childNodes[i].childNodes[1].childNodes[0].nodeValue,
                 index: Number(i)
@@ -86,32 +86,37 @@ function initializeTable() {
     }
 }
 function addRow(keywords, index) {
-    var tr = document.createElement("TR");
-    var td0 = document.createElement("TD");
-    var td1 = document.createElement("TD");
-    var td3 = document.createElement("TD");
-    var text_index = Number(index) + 1;
-    td3.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >";
-    td1.innerHTML = keywords;
-    td0.innerHTML = "<input type='button' value=\""+ text_index + "\" onclick='change_index(\"" + text_index + "\" )' >";
-    td1.style.color = "black";
-    td0.style.width = "10%";
-    td3.style.width = "10%";
-    tr.appendChild(td0);
-    tr.appendChild(td1);
-    tr.appendChild(td3);
-    tableKeywords.insertBefore(tr, tableKeywords.children[index]);
-    for (var i = index + 2; i < tableKeywords.childNodes.length - 1; i++) {
-        var td0 = document.createElement("td");
-        var temp_index = Number(tr.childNodes[0].childNodes[0].value) + 1;
-        td0.innerHTML = "<input type='button' value=\"" + temp_index + "\" onclick='change_index(\"" + temp_index + "\" )' >";
-        var tr = tableKeywords.childNodes[i];
-        var td = document.createElement("td");
-        td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 1) + "\" )' >";
-        tr.childNodes[2].childNodes[0].remove();
-        tr.childNodes[0].childNodes[0].remove();
-        tr.childNodes[0].appendChild(td0.childNodes[0]);
-        tr.childNodes[2].appendChild(td.childNodes[0]);
+    console.log(index);
+    if (index >= tableKeywords.children.length) {
+        alert("Invalid index");
+    } else {
+        var tr = document.createElement("TR");
+        var td0 = document.createElement("TD");
+        var td1 = document.createElement("TD");
+        var td3 = document.createElement("TD");
+        var text_index = Number(index) + 1;
+        td3.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >-</button>";
+        td1.innerHTML = keywords;
+        td0.innerHTML = "<button onclick='change_index(\"" + text_index + "\" )' >" + String(text_index) + "</button>";
+        td1.style.color = "black";
+        td0.style.width = "10%";
+        td3.style.width = "10%";
+        tr.appendChild(td0);
+        tr.appendChild(td1);
+        tr.appendChild(td3);
+        tableKeywords.insertBefore(tr, tableKeywords.children[index]);
+        for (var i = index + 2; i < tableKeywords.childNodes.length - 1; i++) {
+            var td0 = document.createElement("td");
+            var temp_index = i;
+            td0.innerHTML = "<button onclick='change_index(\"" + temp_index + "\" )' >" + String(temp_index) + "</button>";
+            var tr = tableKeywords.childNodes[i];
+            var td = document.createElement("td");
+            td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 1) + "\" )' >-</button>";
+            tr.childNodes[2].childNodes[0].remove();
+            tr.childNodes[0].childNodes[0].remove();
+            tr.childNodes[0].appendChild(td0.childNodes[0]);
+            tr.childNodes[2].appendChild(td.childNodes[0]);
+        }
     }
 }
 function change_index(text_index) {
@@ -126,12 +131,16 @@ function change_index(text_index) {
     input_index.onkeydown = function () {
         if (event.keyCode == 13) {
             if (input_index.value != "") {
-                input_keyword = tableKeywords.childNodes[text_index].childNodes[1].innerHTML;
-                change_keyword = tableKeywords.childNodes[input_index.value].childNodes[1].innerHTML;
-                deleteRow(input_keyword, Number(text_index) - 1);
-                deleteRow(change_keyword, Number(input_index.value) - 1);
-                addRow(input_keyword, Number(input_index.value) - 1);
-                addRow(change_keyword, Number(text_index) - 1);
+                if (Number(input_index.value) >= tableKeywords.children.length || Number(input_index) < 1) {
+                    alert("Invalid index");
+                } else {
+                    input_keyword = tableKeywords.childNodes[text_index].childNodes[1].innerHTML;
+                    change_keyword = tableKeywords.childNodes[input_index.value].childNodes[1].innerHTML;
+                    deleteRow(input_keyword, Number(text_index) - 1);
+                    deleteRow(change_keyword, Number(input_index.value) - 1);
+                    addRow(input_keyword, Number(input_index.value) - 1);
+                    addRow(change_keyword, Number(text_index) - 1);
+                }
             } else {
                 tr.childNodes[0].childNodes[0].remove();
                 tr.childNodes[0].appendChild(node);
@@ -161,10 +170,10 @@ function change_index(text_index) {
 }
 function deleteBtn(keywords, index) {
     var td = document.createElement("TD");
-    td.innerHTML = "<input type='button' value='Delete' class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >";
+    td.innerHTML = "<button class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >Delete</button>";
     td.childNodes[0].onmouseout = function () {
         var td = document.createElement("TD");
-        td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >";
+        td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >-</button>";
         tableKeywords.childNodes[i].childNodes[2].childNodes[0].remove();
         tableKeywords.childNodes[i].childNodes[2].appendChild(td.childNodes[0]);
     };
@@ -196,11 +205,12 @@ function deleteRow(keywords, order) {
         var tr = tableKeywords.childNodes[i];
         tr.childNodes[2].childNodes[0].remove();
         var td = document.createElement("td");
-        td.innerHTML = "<input type='button' value='-' class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >";
+        td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >-</button>";
         tr.childNodes[2].appendChild(td.childNodes[0]);
         var td0 = document.createElement("td");
-        var temp_index = Number(tr.childNodes[0].childNodes[0].value) - 1;
-        td0.innerHTML = "<input type='button' value=\"" + temp_index + "\" onclick='change_index(\"" + temp_index + "\" )' >";
+        var temp_index = Number(i) - 1;
+        console.log(temp_index);
+        td0.innerHTML = "<button onclick='change_index(\"" + temp_index + "\" )' >" + temp_index + "</button>";
         tr.childNodes[0].childNodes[0].remove();
         tr.childNodes[0].appendChild(td0.childNodes[0]);
     }
