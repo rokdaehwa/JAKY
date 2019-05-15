@@ -1,4 +1,3 @@
-
 var divLoading = document.getElementById('divLoading');
 divLoading.style.display = 'none';
 var setting = document.getElementById('setting');
@@ -242,9 +241,17 @@ document.getElementById("draggable").onclick = function () {
     sp.className = "highlights";
     var selectionText = selectText();
     if (selectionText.length != 0) {
-        var plus = document.createElement('button');
-        var plusText = document.createTextNode('+');
-        plus.appendChild(plusText);
+        // var plus = document.createElement('button');
+        // var plusText = document.createTextNode('+');
+        // plus.appendChild(plusText);
+        // plus.style.position = "absolute";
+        // plus.className = "plus";
+        var plus = document.createElement('div');
+        var plusbutton = document.createElement('button');
+        plusbutton.className = "ui blue icon button";
+        plusbutton.innerHTML = "<i class='plus icon'></i>";
+        plusbutton.style.transform = "scale(0.8)"
+        plus.appendChild(plusbutton);
         plus.style.position = "absolute";
         plus.className = "plus";
         plus.onclick = function () {
@@ -311,4 +318,3 @@ $(document).ready(function() {
     }
 
 });
-
