@@ -147,7 +147,7 @@ function change_index(text_index) {
             }
         }
     };
-    document.getElementById("draggable").onclick = function () {
+    document.getElementById("draggable_2").onclick = function () {
         tr.childNodes[0].childNodes[0].remove();
         tr.childNodes[0].appendChild(node);
     };
