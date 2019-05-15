@@ -181,7 +181,7 @@ function change_index(text_index) {
 }
 function deleteBtn(keywords, index) {
     var td = document.createElement("TD");
-    td.innerHTML = "<button class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >Delete</button>";
+    td.innerHTML = "<button class = 'negative ui icon button' style='transform: scale(0.8);' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' ><i class='trash alternate outline icon'></i></button>";
     td.childNodes[0].onmouseout = function () {
         var td = document.createElement("TD");
         td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
