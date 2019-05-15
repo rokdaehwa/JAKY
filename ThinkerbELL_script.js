@@ -1,6 +1,8 @@
 
 var divLoading = document.getElementById('divLoading');
 divLoading.style.display = 'none';
+var setting = document.getElementById('setting');
+setting.style.display = 'none';
 var parameter = "";
 var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
@@ -12,9 +14,7 @@ var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
 var divStart = document.getElementById("start");
-var divLoading = document.getElementById('loading');
 var dropdown = document.getElementById('inbox');
-var setting;
 var cancel=document.getElementById('cancel');
 var beforetext;
 var firebaseConfig = {
@@ -211,13 +211,18 @@ function deleteRow(keywords, order) {
 function ableEditscript() {
     var textareaScript = document.createElement("textarea");
     textareaScript.id = "textareaScript";
-    textareaScript.value = String(beforetext);
+    if (beforetext != undefined) {
+        textareaScript.value = String(beforetext);
+    } else {
+        textareaScript.value = "";
+    }
     document.getElementById("draggable").innerHTML = "";
     textareaScript.style.width = "100%";
     textareaScript.style.height = "95%";
     draggable.appendChild(textareaScript);
     textareaScript.disabled = '';
     btnEditscript.disabled = 'disabled';
+    textareaScript.focus();
 }
 function selectText() {
     var selectionText = "";
@@ -274,14 +279,12 @@ function saveScript() {
 }
 
 function startPresentation() {
-    divLoading.style.display = 'block';
-    location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_setting?' + parameter;
+    document.getElementById("title").innerHTML = inputPr_name.value;
+    setting.style.display = 'block';
 }
 // JavaScript source code
 
 $(document).ready(function() {
-    setting=document.getElementById('setting');
-    setting.style.display='none';
     if (location.search) {
       parameter = location.search;
       var paramIndex = parameter.indexOf("?");
@@ -294,20 +297,15 @@ $(document).ready(function() {
         divLoading.style.display = 'block';
         location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
     };
-    divStart.onclick = function(){
-        divLoading.style.display = 'block';
-        var parameter2=inbox.value;
-        console.log(parameter2);
-        var parameter = location.search;
-        var paramIndex = parameter.indexOf("?");
-        parameter = parameter.substring(paramIndex + 1);
-        location.href='./ThinkerbELL_tutorial.html?'+parameter+'?'+parameter2;
+    divStart.onclick = function () {
+        if (inbox.value == "") {
+            alert("No time input");
+        } else {
+            divLoading.style.display = 'block';
+            var parameter2 = inbox.value;
+            location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
+        }
     }
-
-    btnStart.onclick=function(){
-        setting.style.display='block';
-    }
-
     cancel.onclick=function(){
         setting.style.display='none';
     }
