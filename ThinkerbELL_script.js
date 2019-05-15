@@ -95,7 +95,7 @@ function addRow(keywords, index) {
         var td1 = document.createElement("TD");
         var td3 = document.createElement("TD");
         var text_index = Number(index) + 1;
-        td3.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >-</button>";
+        td3.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
         td1.innerHTML = keywords;
         td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + text_index + "\" )' >" + String(text_index) + "</button>";
         td1.style.color = "black";
@@ -111,7 +111,7 @@ function addRow(keywords, index) {
             td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + temp_index + "\" )' >" + String(temp_index) + "</button>";
             var tr = tableKeywords.childNodes[i];
             var td = document.createElement("td");
-            td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 1) + "\" )' >-</button>";
+            td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
             tr.childNodes[2].childNodes[0].remove();
             tr.childNodes[0].childNodes[0].remove();
             tr.childNodes[0].appendChild(td0.childNodes[0]);
@@ -173,7 +173,7 @@ function deleteBtn(keywords, index) {
     td.innerHTML = "<button class = 'delete' onclick='deleteRow(\"" + keywords + "\",\"" + index + "\" )' >Delete</button>";
     td.childNodes[0].onmouseout = function () {
         var td = document.createElement("TD");
-        td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' >-</button>";
+        td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
         tableKeywords.childNodes[i].childNodes[2].childNodes[0].remove();
         tableKeywords.childNodes[i].childNodes[2].appendChild(td.childNodes[0]);
     };
@@ -205,7 +205,7 @@ function deleteRow(keywords, order) {
         var tr = tableKeywords.childNodes[i];
         tr.childNodes[2].childNodes[0].remove();
         var td = document.createElement("td");
-        td.innerHTML = "<button class = '-' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i - 2) + "\" )' >-</button>";
+        td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
         tr.childNodes[2].appendChild(td.childNodes[0]);
         var td0 = document.createElement("td");
         var temp_index = Number(i) - 1;
