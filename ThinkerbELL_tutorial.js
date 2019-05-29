@@ -56,6 +56,8 @@ canvas.onclick=function(){
    var parameter = location.search;
    var paramIndex = parameter.indexOf("?");
    parameter = parameter.substring(paramIndex + 1);
+  parameter = parameter.replace(/%20/gi, " ");
+  parameter = parameter.replace(/%27/gi, "'");
    location.href='./ThinkerbELL_main.html?'+parameter;
    return;
  }
