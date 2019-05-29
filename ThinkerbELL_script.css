@@ -67,12 +67,20 @@ body {
     margin-top: 5px;
     margin-bottom: 20px;
 }
-.show_text {
-    width: 80%;
-    height: 30px;
+#options {
+    width: 60%;
+    height: 60px;
     margin: auto;
     margin-top: 5px;
     font-size: 15px;
+}
+#option1 {
+    margin-top: 5px;
+    float: left;
+}
+#option2 {
+    margin-top:5px;
+    float: left;
 }
 #button {
     padding-top: 20px;
