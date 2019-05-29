@@ -1,9 +1,7 @@
 var btnStart = document.getElementById('btnStart');
-var divLoading = document.getElementById('divLoading');
 var inputID = document.getElementById('inputID');
 var inputPW = document.getElementById('inputPW');
 
-divLoading.style.display = 'none';
 btnStart.onclick = function(){
     if(inputID.value != "startupPresenter1" || inputPW.value != '******'){
         //alert("Invalid ID/PW");
@@ -11,7 +9,6 @@ btnStart.onclick = function(){
         //divLoading.style.display = 'block';
         //location.href='ThinkerbELL_list.html'
     }
-    divLoading.style.display = 'block';
     location.href='ThinkerbELL_list.html'
 }
 function Enter_Check(){
@@ -22,7 +19,6 @@ function Enter_Check(){
             //divLoading.style.display = 'block';
             //location.href='ThinkerbELL_list.html'
         }
-        divLoading.style.display = 'block';
         location.href='ThinkerbELL_list.html'
     }
 }

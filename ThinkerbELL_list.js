@@ -15,7 +15,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function readFromDatabase() {
-    firebase.database().ref('/JAKY/').once('value', function (snapshot) {
+    var divLoading = document.getElementById('divLoading');
+    var promise = firebase.database().ref('/JAKY/').once('value', function (snapshot) {
 
         var myValue = snapshot.val();
         if (myValue != null) {
@@ -26,39 +27,22 @@ function readFromDatabase() {
             }
         }
     });
+    promise.then(snapshot=>divLoading.style.display = 'none');
 }
 
 function addList(num, name) {
-    console.log("add List..");
-    // var row = tblList.insertRow(-1);
-    // var col1 = row.insertCell(0);
-    // var col2 = row.insertCell(1);
-    
-    // col1.innerHTML = num;
-    // col2.innerHTML = name;
-    
-    var link = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_script?' + name;
+    var link = 'https://./ThinkerbELL_script?' + name;
 
     $('#tblList').append(
         $('<tr>').append(
             $('<td>').append(num),
             $('<td>').append(
-                $('<a>').prop('href', link).addClass('openMask').append(name)
-                // $('<div>').prop('href', link).addClass('openMask').append(name)
+                $('<a>').prop('href', link).append(name)
             )
         )
     );
 }
 
-
-function selectAction(name) {
-    
-}
-
-function startPresentation(name) {
-    
-}
-
-
-
-
+$(document).ready(function() {
+    readFromDatabase();     
+});
