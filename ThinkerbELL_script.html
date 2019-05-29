@@ -5,8 +5,6 @@
     <title>ThinkerbELL</title>
 
     <link href="./ThinkerbELL_script.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="semantic/semantic.css" rel="stylesheet" type="text/css">
@@ -138,6 +136,22 @@
     </div>
     
     <div id='divLoading'><img id='imgLoading' src='./loading_deer.gif' alt='Loading...' /></div>
+    
+    <a class='ui huge blue image label' id='user' onclick='sidebar()'>
+            <i class='user circle outline icon'></i> 
+            JAKY
+        </a>
+    
+    <div class="ui right demo vertical sidebar labeled icon menu">
+            <a class="item">
+                <i class="list ol icon" onclick='location.href="ThinkerbELL_list.html";'></i>
+                Presentation List
+            </a>
+            <a class="item" onclick='location.href="index.html";'>
+                <i class="sign-out icon"></i>
+                Log-Out
+            </a>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
     <script src="jquery/js/jquery-1.9.0.min.js"></script>
