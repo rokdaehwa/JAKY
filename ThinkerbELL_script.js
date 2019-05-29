@@ -1,5 +1,3 @@
-var divLoading = document.getElementById('divLoading');
-divLoading.style.display = 'none';
 var setting = document.getElementById('setting');
 setting.style.display = 'none';
 var parameter = "";
@@ -38,7 +36,6 @@ function writeToDatabase(pr_name, script, table) {
             }
         }
     });
-    divLoading.style.display = 'block';
     setTimeout(function () {
         var newKey = firebase.database().ref('/JAKY/' + pr_name + '/').push();
         newKey.set({
@@ -59,8 +56,9 @@ function writeToDatabase(pr_name, script, table) {
     }, 1000)
 }
 function readFromDatabase() {
+    var divLoading = document.getElementById('divLoading');
     if (parameter != "") {
-        firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
+        var promise = firebase.database().ref('/JAKY/' + parameter + '/').once('value', function (snapshot) {
             initializeTable();
 
             var myValue = snapshot.val();
@@ -80,6 +78,7 @@ function readFromDatabase() {
             }
         });
     }
+    promise.then(snapshot=>divLoading.style.display='none');
 }
 function initializeTable() {
     var numRows = tableKeywords.rows.length;
@@ -334,14 +333,12 @@ $(document).ready(function() {
     parameter = parameter.replace(/%27/gi, "'");
     readFromDatabase();
     document.body.childNodes[1].onclick = function () {
-        divLoading.style.display = 'block';
         location.href = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_list'
     };
     divStart.onclick = function () {
         if (inbox.value == "") {
             alert("No time input");
         } else{
-            divLoading.style.display = 'block';
             var parameter2 = inbox.value;
             location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
         }
