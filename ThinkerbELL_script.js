@@ -1,5 +1,4 @@
 var setting = document.getElementById('setting');
-setting.style.display = 'none';
 var parameter = "";
 var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
@@ -344,7 +343,12 @@ $(document).ready(function() {
             alert("No time input");
         } else{
             var parameter2 = inbox.value;
-            location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
+            if(document.getElementById("check1").checked == true){
+                location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
+            }
+            else{
+                location.href = './ThinkerbELL_main.html?' + parameter;
+            }
         }
     }
     cancel.onclick=function(){
