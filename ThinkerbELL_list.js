@@ -31,7 +31,7 @@ function readFromDatabase() {
 }
 
 function addList(num, name) {
-    var link = 'https://./ThinkerbELL_script?' + name;
+    var link = 'https://rokdaehwa.github.io/JAKY/ThinkerbELL_script?' + name;
 
     $('#tblList').append(
         $('<tr>').append(
