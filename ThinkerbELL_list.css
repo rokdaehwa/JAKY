@@ -48,3 +48,9 @@ border-bottom: 1px solid #c5c5c5;
   left: 50%; 
   z-index: 100; 
 }
+
+#user {
+  position: absolute;
+  top: 5%;
+  left: 85%;
+}

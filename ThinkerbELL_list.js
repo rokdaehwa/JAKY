@@ -43,6 +43,10 @@ function addList(num, name) {
     );
 }
 
+function sidebar() {
+    $('.ui.labeled.icon.sidebar').sidebar('toggle');
+}
+
 $(document).ready(function() {
     readFromDatabase();     
 });
