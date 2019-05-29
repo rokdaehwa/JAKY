@@ -1,13 +1,6 @@
-hr.line {
-  width: 500px;
-  color: gray;
-  border: thin solid gray;
-}
-
 #tblTitle {
 margin: 0 auto;
 }
-
 
 #tblList {
 width: 50%;
@@ -17,6 +10,7 @@ margin: 0 auto;
 
 #tblAdd {
 margin: 0 auto;
+width: 50%;
 }
 
 th {
