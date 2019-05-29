@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -52,7 +52,7 @@
                         <tr>
                             <td style="width: 18%;">
                                 <div class="ui input focus" style="float: left;">
-                                    <input type="text" id="inputIndex" placeholder="#" style="max-width: 100%; width: 100%;">
+                                    <input type="text" id="inputIndex" placeholder="#" style="max-width: 100%; width: 100%;" onkeydown="Enter_Check();">
                                 </div>
                             </td>
                             <td style="width: 77%;">
@@ -83,7 +83,7 @@
         </tr>
         <tr style="height:100%">
             <td colspan="3">
-                <span><button class="ui primary button" id="btnSave" onclick="saveScript();" style="height:100%; width:10%; font-size:100%;">Save</button></span>
+                <span><button class="ui primary button" id="btnSave" onclick="saveScript();" style="height:100%; width:10%; font-size:100%;" disabled="disabled">Save</button></span>
                 <span><button class="ui primary button" id="btnStart" onclick="startPresentation();" style="height: 100%; width: 10%; font-size:100%;">Start</button></span>
             </td>
         </tr>

@@ -7,6 +7,7 @@ var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
 var allTable = document.getElementById('allTable');
 var inputPr_name = document.getElementById("inputPresentationname");
+var btnSave = document.getElementById("btnSave");
 var btnStart = document.getElementById("btnStart");
 var btnEditscript = document.getElementById("btnEditscript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
@@ -52,8 +53,10 @@ function writeToDatabase(pr_name, script, table) {
                 index: Number(i)
             });
         }
-        divLoading.style.display = 'none';
     }, 1000);
+    setTimeout(function () {
+        location.href = './ThinkerbELL_script.html?' + pr_name;
+    }, 1000)
 }
 function readFromDatabase() {
     if (parameter != "") {
@@ -87,36 +90,32 @@ function initializeTable() {
 }
 function addRow(keywords, index) {
     //add keywords in (index + 1)
-    if (index >= tableKeywords.children.length || index < 0) {
-        alert("Invalid index");
-    } else {
-        var tr = document.createElement("TR");
-        var td0 = document.createElement("TD");
-        var td1 = document.createElement("TD");
-        var td3 = document.createElement("TD");
-        var text_index = Number(index) + 1;
-        td3.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
-        td1.innerHTML = keywords;
-        td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + text_index + "\" )' >" + String(text_index) + "</button>";
-        td1.style.color = "black";
-        td0.style.width = "10%";
-        td3.style.width = "10%";
-        tr.appendChild(td0);
-        tr.appendChild(td1);
-        tr.appendChild(td3);
-        tableKeywords.insertBefore(tr, tableKeywords.children[index]);
-        for (var i = index + 2; i < tableKeywords.childNodes.length - 1; i++) {
-            var td0 = document.createElement("td");
-            var temp_index = i;
-            td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + temp_index + "\" )' >" + String(temp_index) + "</button>";
-            var tr = tableKeywords.childNodes[i];
-            var td = document.createElement("td");
-            td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i-1) + "\" )' ><i class='minus icon'></i></button>";
-            tr.childNodes[2].childNodes[0].remove();
-            tr.childNodes[0].childNodes[0].remove();
-            tr.childNodes[0].appendChild(td0.childNodes[0]);
-            tr.childNodes[2].appendChild(td.childNodes[0]);
-        }
+    var tr = document.createElement("TR");
+    var td0 = document.createElement("TD");
+    var td1 = document.createElement("TD");
+    var td3 = document.createElement("TD");
+    var text_index = Number(index) + 1;
+    td3.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + index + "\" )' ><i class='minus icon'></i></button>";
+    td1.innerHTML = keywords;
+    td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + text_index + "\" )' >" + String(text_index) + "</button>";
+    td1.style.color = "black";
+    td0.style.width = "10%";
+    td3.style.width = "10%";
+    tr.appendChild(td0);
+    tr.appendChild(td1);
+    tr.appendChild(td3);
+    tableKeywords.insertBefore(tr, tableKeywords.children[index]);
+    for (var i = index + 2; i < tableKeywords.childNodes.length - 1; i++) {
+        var td0 = document.createElement("td");
+        var temp_index = i;
+        td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + temp_index + "\" )' >" + String(temp_index) + "</button>";
+        var tr = tableKeywords.childNodes[i];
+        var td = document.createElement("td");
+        td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i-1) + "\" )' ><i class='minus icon'></i></button>";
+        tr.childNodes[2].childNodes[0].remove();
+        tr.childNodes[0].childNodes[0].remove();
+        tr.childNodes[0].appendChild(td0.childNodes[0]);
+        tr.childNodes[2].appendChild(td.childNodes[0]);
     }
 }
 function change_index(text_index) {
@@ -139,6 +138,7 @@ function change_index(text_index) {
                     if (text_index == input_index.value) {
                         tr.childNodes[0].childNodes[0].remove();
                         tr.childNodes[0].appendChild(node);
+                        btnSave.disabled = "";
                         return;
                     }
                     deleteRow(input_keyword, Number(text_index) - 1); // delete text_index
@@ -150,7 +150,8 @@ function change_index(text_index) {
                         deleteRow(change_keyword, Number(input_index.value) - 2); //delete input_index
                         addRow(input_keyword, Number(input_index.value) - 2);
                         addRow(change_keyword, Number(text_index) - 1);
-                    }                    
+                    }
+                    btnSave.disabled = "";
                 }
             } else {
                 tr.childNodes[0].childNodes[0].remove();
@@ -196,14 +197,21 @@ function addKeywords() {
     var index;
     if (inputIndex.value == "") {
         index = tableKeywords.children.length;
-    } else {
+    } else{
         index = inputIndex.value;
     }
     if (inputKeywords.value != "") {
-        addRow(inputKeywords.value, Number(index) - 1);
-        inputIndex.value = null;
-        inputKeywords.value = null;
-        inputKeywords.focus();
+        if (index > tableKeywords.children.length || index < 0) {
+            alert("Invalid index");
+            inputIndex.value = null;
+            inputIndex.focus();
+        } else {
+            addRow(inputKeywords.value, Number(index) - 1);
+            inputIndex.value = null;
+            inputKeywords.value = null;
+            inputKeywords.focus();
+            btnSave.disabled = "";
+        }
     }
 }
 function Enter_Check() {
@@ -226,6 +234,7 @@ function deleteRow(keywords, order) {
         tr.childNodes[0].appendChild(td0.childNodes[0]);
     }
     tableKeywords.childNodes[Number(order) + 1].remove();
+    btnSave.disabled = "";
 
 }
 function ableEditscript() {
@@ -243,6 +252,7 @@ function ableEditscript() {
     textareaScript.disabled = '';
     btnEditscript.disabled = 'disabled';
     textareaScript.focus();
+    btnSave.disabled = "";
 }
 function selectText() {
     var selectionText = "";
@@ -304,14 +314,16 @@ function saveScript() {
     if (textareaScript != null) {
         textareaScript.remove();
     }
+    btnSave.disabled = "disabled";
 }
-
 function startPresentation() {
+    if (inputPr_name.value == "") {
+        alert("Please enter your prsentation name.");
+        return;
+    }
     document.getElementById("title").innerHTML = inputPr_name.value;
     setting.style.display = 'block';
 }
-// JavaScript source code
-
 $(document).ready(function() {
     if (location.search) {
       parameter = location.search;
@@ -328,7 +340,7 @@ $(document).ready(function() {
     divStart.onclick = function () {
         if (inbox.value == "") {
             alert("No time input");
-        } else {
+        } else{
             divLoading.style.display = 'block';
             var parameter2 = inbox.value;
             location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
