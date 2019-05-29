@@ -91,3 +91,9 @@ body {
 #btnAddkeywords {
     transform: scale(0.8);
 }
+
+#user {
+    position: absolute;
+    top: 5%;
+    left: 85%;
+}
