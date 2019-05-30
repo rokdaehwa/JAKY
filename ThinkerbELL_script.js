@@ -27,7 +27,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 function writeToDatabase(pr_name, script, table) {
     var divLoading = document.getElementById('divLoading');
-    divloading.style.display = "block";
+    divLoading.style.display = "block";
     firebase.database().ref('/JAKY/').once('value', function (snapshot) {
         var myValue = snapshot.val();
         if (myValue != null) {
