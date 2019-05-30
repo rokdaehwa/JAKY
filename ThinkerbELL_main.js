@@ -1,5 +1,6 @@
 var area1=document.getElementById("area1");
 var area2=document.getElementById("area2");
+var ready = document.getElementById("ready");
 
 var index=0;
 var mid=[];
@@ -107,58 +108,58 @@ var tbar = document.getElementById("TBar");
 var tpointer = document.getElementById("TPointer");
 var ppointer = document.getElementById("PPointer");
 
-function time_manage() {
+function timer(){
+  var data = google.visualization.arrayToDataTable([
+    ['Time', 'Percentage'],
+    ['Spent',      t],
+    ['Remaining',T-t],
+  ]);
+
+  var options = {
+    title: 'Timer',
+    colors: ['white','red'],
+    legend: 'none',
+    pieSliceText: 'none',
+    pieSliceBorderColor: 'black',
+    chartArea: {left: '5%', top: '5%', width: '90%', height: '90%'}
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+
+  if(t>=T){
+    clearInterval(time);
+    alert("Time Done");
+    location.href='ThinkerbELL_presentation2.html';
+  }
+  else{t+=10;}
+
+  var dif = twidth - pwidth;
+  if (twidth >= 100) {
+    clearInterval(time);
+  } 
+  else {
+    twidth+=(1000/T); 
+    tbar.style.width = twidth + '%'; 
+    tpointer.style.width = twidth + '%';
+  }
+  if(dif>10){
+    tbar.style.backgroundColor = 'red';
+  }
+  else if(dif<-10){
+    tbar.style.backgroundColor = '#e5e500';
+  }
+  else{
+    tbar.style.backgroundColor = 'green';
+  }        
+}
+
+function start(){
+  ready.style.display = "none";
+  var time = setInterval(timer, 10);
+}
+
+$(document).ready(function() {
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(timer);
-
-    var time = setInterval(timer, 10);
-
-    function frame() {
-    }
-    function timer(){
-      var data = google.visualization.arrayToDataTable([
-              ['Time', 'Percentage'],
-              ['Spent',      t],
-              ['Remaining',T-t],
-            ]);
-    
-            var options = {
-              title: 'Timer',
-              colors: ['white','red'],
-              legend: 'none',
-              pieSliceText: 'none',
-              pieSliceBorderColor: 'black',
-              chartArea: {left: '5%', top: '5%', width: '90%', height: '90%'}
-            };
-    
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
-    
-            if(t>=T){
-              clearInterval(time);
-              alert("Time Done");
-              location.href='ThinkerbELL_presentation2.html';
-            }
-            else{t+=10;}
-
-            var dif = twidth - pwidth;
-            if (twidth >= 100) {
-              clearInterval(time);
-            } 
-            else {
-              twidth+=(1000/T); 
-              tbar.style.width = twidth + '%'; 
-              tpointer.style.width = twidth + '%';
-            }
-            if(dif>10){
-              tbar.style.backgroundColor = 'red';
-            }
-            else if(dif<-10){
-              tbar.style.backgroundColor = '#e5e500';
-            }
-            else{
-              tbar.style.backgroundColor = 'green';
-            }        
-    }
-  }
-  time_manage();
+});
