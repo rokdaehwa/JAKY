@@ -24,7 +24,7 @@ var firebaseConfig = {
     var indexstring=location.split('?');
     var parameter=indexstring[1];
     parameter2=indexstring[2];
-    return firebase.database().ref('JAKY/'+parameter).once('value', function(snapshot) {
+    var promise = firebase.database().ref('JAKY/'+parameter).once('value', function(snapshot) {
         var myKey = snapshot.key;
         var myValue = snapshot.val();
         var keyList = Object.keys(myValue);
@@ -71,7 +71,8 @@ var firebaseConfig = {
                 event.preventDefault();
                 area2.click();  
           }});
-    })
+    });
+    promise.then(snapshot=>divLoading.style.display = 'none');  
 }
 
 function updatekeywords(mid){
