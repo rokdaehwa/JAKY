@@ -54,7 +54,7 @@ function writeToDatabase(pr_name, script, table) {
     }, 1000);
     setTimeout(function () {
         location.href = './ThinkerbELL_script.html?' + pr_name;
-    }, 1000)
+    }, 2000)
 }
 function readFromDatabase() {
     var divLoading = document.getElementById('divLoading');
