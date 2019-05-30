@@ -327,9 +327,6 @@ function startPresentation() {
     document.getElementById("title").innerHTML = inputPr_name.value;
     setting.style.display = 'block';
 }
-function sidebar() {
-    $('.ui.labeled.icon.sidebar').sidebar('toggle');
-}
 
 $(document).ready(function() {
     if (location.search) {
