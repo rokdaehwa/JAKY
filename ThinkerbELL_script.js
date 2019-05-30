@@ -356,6 +356,7 @@ $(document).ready(function() {
             }
         }
     }
+    $('.ui.dropdown').dropdown();
     cancel.onclick=function(){
         setting.style.display='none';
     }
