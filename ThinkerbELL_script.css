@@ -100,8 +100,13 @@ body {
     transform: scale(0.8);
 }
 
-#user {
+#user1 {
     position: absolute;
     top: 5%;
     left: 85%;
+}
+#user2 {
+    position: absolute;
+    top: 5%;
+    left: 75%;
 }
