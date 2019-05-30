@@ -76,8 +76,11 @@ function readFromDatabase() {
                 }
             }
         });
+        promise.then(snapshot=>divLoading.style.display='none');
     }
-    promise.then(snapshot=>divLoading.style.display='none');
+    else {
+        divLoading.style.display='none';
+    }
 }
 function initializeTable() {
     var numRows = tableKeywords.rows.length;
