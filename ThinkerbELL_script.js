@@ -352,7 +352,7 @@ $(document).ready(function() {
                 location.href = './ThinkerbELL_tutorial.html?' + parameter + '?' + parameter2;
             }
             else{
-                location.href = './ThinkerbELL_main.html?' + parameter;
+                location.href = './ThinkerbELL_main.html?' + parameter + '?' + parameter2;
             }
         }
     }
