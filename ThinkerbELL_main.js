@@ -4,9 +4,6 @@ var ready = document.getElementById("ready");
 var setting=document.getElementById("setting");
 var cancel=document.getElementById("cancel");
 var finish=document.getElementById("finish");
-var alarm=document.getElementById("alarm");
-var cancel2=document.getElementById("cancel2");
-var finish2=document.getElementById("finish2");
 var newind;
 var index=0;
 var mid=[];
@@ -103,11 +100,6 @@ document.getElementById("closeicon").onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
 
-finish2.onclick=function(){
-  location.href='ThinkerbELL_list.html';
-}
-
-
 function left2(){
     if(index==-1){
         index=0;
@@ -165,7 +157,6 @@ function timer(){
 
 if(t>=T){
     clearInterval(time);
-    alarm.style.display = 'block';
   }
   else{t+=10;}
 
