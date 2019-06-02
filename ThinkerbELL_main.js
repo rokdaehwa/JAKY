@@ -4,6 +4,9 @@ var ready = document.getElementById("ready");
 var setting=document.getElementById("setting");
 var cancel=document.getElementById("cancel");
 var finish=document.getElementById("finish");
+var alarm=document.getElementById("alarm");
+var cancel2=document.getElementById("cancel2");
+var finish2=document.getElementById("finish2");
 var newind;
 var index=0;
 var mid=[];
@@ -85,12 +88,10 @@ function updatekeywords(mid){
     }
     if(index==999){
       index=newind-1;
-      console.log("hi");
       updatekeywords(mid);
       return;
     }
     if(newkey==null&&index!=999){
-      console.log(index);
       leftbox.innerHTML="End of document";
       leftbox.style.backgroundColor='grey';
       rightbox.innerHTML="Finish Presentation";
@@ -122,6 +123,14 @@ document.getElementById("closeicon").onclick=function(){
     location.href='ThinkerbELL_list.html';
 }
 
+finish2.onclick=function(){
+  location.href='ThinkerbELL_list.html';
+}
+
+cancel2.onclick=function(){
+  alarm.style.display='none';
+}
+
 var T=60000*parameter2; // From setting page
 var t=0;
 var P;
@@ -150,10 +159,9 @@ function timer(){
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
   chart.draw(data, options);
 
-  if(t>=T){
+if(t>=T){
     clearInterval(time);
-    alert("Time Done");
-    location.href='ThinkerbELL_list.html';
+    alarm.style.display = 'block';
   }
   else{t+=10;}
 
