@@ -153,7 +153,7 @@ function timer(){
   if(t>=T){
     clearInterval(time);
     alert("Time Done");
-    location.href='ThinkerbELL_presentation2.html';
+    location.href='ThinkerbELL_list.html';
   }
   else{t+=10;}
 
