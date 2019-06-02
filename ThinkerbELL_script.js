@@ -4,9 +4,8 @@ var inputIndex = document.getElementById("inputIndex");
 var index_script = "";
 var allTable = document.getElementById('allTable');
 var inputPr_name = document.getElementById("inputPresentationname");
-var btnSave = document.getElementById("btnSave");
+var btnEdit = document.getElementById("btnEdit");
 var btnStart = document.getElementById("btnStart");
-var btnEditscript = document.getElementById("btnEditscript");
 var btnAddkeywords = document.getElementById("btnAddkeywords");
 var tableKeywords = document.getElementById("tableKeywords");
 var inputKeywords = document.getElementById("inputKeywords");
@@ -23,7 +22,6 @@ var firebaseConfig = {
     messagingSenderId: "642856931579",
     appId: "1:642856931579:web:322ca6e99c231e4c"
 };
-
 firebase.initializeApp(firebaseConfig);
 function writeToDatabase(pr_name, script, table) {
     var divLoading = document.getElementById('divLoading');
@@ -69,7 +67,7 @@ function readFromDatabase() {
                 for (var i = 0; i < keyList.length; i++) {
                     var myKey = keyList[i];
                     if (myValue[myKey].index == 0) {
-                        document.getElementById("draggable").innerHTML = myValue[myKey].script;
+                        document.getElementById("draggable").innerHTML = myValue[myKey].script.replace(/\n/gi, "<br>");
                         beforetext = myValue[myKey].script;
                         inputPr_name.value = parameter;
                     } else {
@@ -141,7 +139,6 @@ function change_index(text_index) {
                     if (text_index == input_index.value) {
                         tr.childNodes[0].childNodes[0].remove();
                         tr.childNodes[0].appendChild(node);
-                        btnSave.disabled = "";
                         return;
                     }
                     deleteRow(input_keyword, Number(text_index) - 1); // delete text_index
@@ -154,7 +151,6 @@ function change_index(text_index) {
                         addRow(input_keyword, Number(input_index.value) - 2);
                         addRow(change_keyword, Number(text_index) - 1);
                     }
-                    btnSave.disabled = "";
                 }
             } else {
                 tr.childNodes[0].childNodes[0].remove();
@@ -213,7 +209,6 @@ function addKeywords() {
             inputIndex.value = null;
             inputKeywords.value = null;
             inputKeywords.focus();
-            btnSave.disabled = "";
         }
     }
 }
@@ -237,25 +232,7 @@ function deleteRow(keywords, order) {
         tr.childNodes[0].appendChild(td0.childNodes[0]);
     }
     tableKeywords.childNodes[Number(order) + 1].remove();
-    btnSave.disabled = "";
 
-}
-function ableEditscript() {
-    var textareaScript = document.createElement("textarea");
-    textareaScript.id = "textareaScript";
-    if (beforetext != undefined) {
-        textareaScript.value = String(beforetext);
-    } else {
-        textareaScript.value = "";
-    }
-    document.getElementById("draggable").innerHTML = "";
-    textareaScript.style.width = "100%";
-    textareaScript.style.height = "95%";
-    draggable.appendChild(textareaScript);
-    textareaScript.disabled = '';
-    btnEditscript.disabled = 'disabled';
-    textareaScript.focus();
-    btnSave.disabled = "";
 }
 function selectText() {
     var selectionText = "";
@@ -307,8 +284,6 @@ document.getElementById("draggable").onclick = function () {
 }
 function saveScript() {
     var textareaScript = document.getElementById("textareaScript");
-    btnStart.disabled = "";
-    btnEditscript.disabled = '';
     if (textareaScript != null) {
         draggable.innerHTML = textareaScript.value;
         beforetext = textareaScript.value;
@@ -317,7 +292,24 @@ function saveScript() {
     if (textareaScript != null) {
         textareaScript.remove();
     }
-    btnSave.disabled = "disabled";
+}
+function Edit() {
+    var textareaScript = document.createElement("textarea");
+    textareaScript.id = "textareaScript";
+    if (beforetext != undefined) {
+        textareaScript.value = String(beforetext);
+    } else {
+        textareaScript.value = "Copy&Paste";
+    }
+    document.getElementById("draggable").innerHTML = "";
+    textareaScript.style.width = "100%";
+    textareaScript.style.height = "95%";
+    draggable.appendChild(textareaScript);
+    inputPr_name.disabled = '';
+    textareaScript.disabled = '';
+    textareaScript.focus();
+    btnEdit.parentElement.innerHTML = '<button class="ui primary button" id="btnSave" onclick="saveScript();" style="height:100%; width:10%; font-size:100%;">Save</button>';
+    
 }
 function startPresentation() {
     if (inputPr_name.value == "") {
@@ -327,8 +319,8 @@ function startPresentation() {
     document.getElementById("title").innerHTML = inputPr_name.value;
     setting.style.display = 'block';
 }
-
-$(document).ready(function() {
+$(document).ready(function () {
+    inputPr_name.disabled = 'disabled';
     if (location.search) {
       parameter = location.search;
       var paramIndex = parameter.indexOf("?");
