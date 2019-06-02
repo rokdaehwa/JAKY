@@ -43,33 +43,9 @@ var firebaseConfig = {
         //console.log(mid);
         P=mid.length;
         updatekeywords(mid);
-        area1.onclick=function(){
-            if(index==-1){
-                index=0;
-            }
-            index--;
-            updatekeywords(mid);
-            if(pwidth<=0){
-              pwidth=0;
-            }
-            else{
-              pwidth -= (100/P);
-            }
-            ppointer.style.width = pwidth + '%';
-        }
-        area2.onclick=function(){
-            if(index==-1){index=0;}
-            index++;
-            updatekeywords(mid);
-            if(pwidth>=100){
-              pwidth=100; 
-            }
-            else{
-              pwidth += (100/P);
-            }
-            ppointer.style.width = pwidth + '%';
-        }
-    });
+        area1.addEventListener("click",left2);
+        area2.addEventListener("click",right2);
+      });
     promise.then(snapshot=>divLoading.style.display = 'none');  
 }
 
@@ -82,6 +58,8 @@ function updatekeywords(mid){
     var newkey=Object.keys(mid)[index];
     var newkey2=Object.keys(mid)[index+1];
     if(index==1001){
+      area1.removeEventListener('click',left2);
+      area2.removeEventListener('click',right2);
       setting.style.display = 'block';
       index--;
       return;
@@ -117,6 +95,8 @@ finish.onclick=function(){
 
 cancel.onclick=function(){
   setting.style.display='none';
+  area1.addEventListener("click",left2);
+  area2.addEventListener("click",right2);
 }
 
 document.getElementById("closeicon").onclick=function(){
@@ -127,9 +107,33 @@ finish2.onclick=function(){
   location.href='ThinkerbELL_list.html';
 }
 
-cancel2.onclick=function(){
-  alarm.style.display='none';
+
+function left2(){
+    if(index==-1){
+        index=0;
+    }
+    index--;
+    updatekeywords(mid);
+    if(pwidth<=0){
+      pwidth=0;
+    }
+    else{
+      pwidth -= (100/P);
+    }
+    ppointer.style.width = pwidth + '%';
 }
+ function right2(){
+    if(index==-1){index=0;}
+    index++;
+    updatekeywords(mid);
+    if(pwidth>=100){
+      pwidth=100; 
+    }
+    else{
+      pwidth += (100/P);
+    }
+    ppointer.style.width = pwidth + '%';
+}  
 
 var T=60000*parameter2; // From setting page
 var t=0;
