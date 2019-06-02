@@ -1,7 +1,10 @@
 var area1=document.getElementById("area1");
 var area2=document.getElementById("area2");
 var ready = document.getElementById("ready");
-
+var setting=document.getElementById("setting");
+var cancel=document.getElementById("cancel");
+var finish=document.getElementById("finish");
+var newind;
 var index=0;
 var mid=[];
 var parameter2;
@@ -66,16 +69,36 @@ var firebaseConfig = {
     promise.then(snapshot=>divLoading.style.display = 'none');  
 }
 
+
 function updatekeywords(mid){
+
     if(index==-1){
         return;
     }
     var newkey=Object.keys(mid)[index];
     var newkey2=Object.keys(mid)[index+1];
-    if(newkey==null){
-        location.href='ThinkerbELL_presentation2.html';
-            return;
+    if(index==1001){
+      setting.style.display = 'block';
+      index--;
+      return;
     }
+    if(index==999){
+      index=newind-1;
+      console.log("hi");
+      updatekeywords(mid);
+      return;
+    }
+    if(newkey==null&&index!=999){
+      console.log(index);
+      leftbox.innerHTML="End of document";
+      leftbox.style.backgroundColor='grey';
+      rightbox.innerHTML="Finish Presentation";
+      rightbox.style.backgroundColor='#FF4E44';
+      newind=index;
+      index=1000;
+      return;
+    }
+    leftbox.style.backgroundColor='#EBA393'
     leftbox.innerHTML=mid[newkey];
     if(newkey2==null){
         rightbox.innerHTML="End of document";
@@ -84,7 +107,14 @@ function updatekeywords(mid){
     }
     rightbox.style.backgroundColor='#EBA393';
     rightbox.innerHTML=mid[newkey2];
+}
 
+finish.onclick=function(){
+  location.href='ThinkerbELL_list.html';
+}
+
+cancel.onclick=function(){
+  setting.style.display='none';
 }
 
 document.getElementById("closeicon").onclick=function(){
