@@ -8,6 +8,7 @@ var newind;
 var index=0;
 var mid=[];
 var parameter2;
+var time;
 
 var firebaseConfig = {
     apiKey: "AIzaSyB8AwRXeTAYHOZC9lB6KY99UM45CgzxGqM",
@@ -178,7 +179,7 @@ function timer(){
 
 function start(){
   ready.style.display = "none";
-  var time = setInterval(timer, 10);
+  time = setInterval(timer, 10);
   document.addEventListener("keyup", function(event) {
             if (event.keyCode === 37||event.keyCode==40||event.keyCode==80||event.keyCode==8){
             event.preventDefault();
