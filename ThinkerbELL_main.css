@@ -9,21 +9,19 @@
 .textbox {
   font-weight:bold;
   text-align: center;
-  
   display: flex;
   justify-content: center;
   align-items: center; 
 }
 #leftbox {
-  height: 100%;
+  height: 300px;
   background-color:#EB8376;
-  border:solid grey;
   box-sizing: border-box;
   border-width:5px;
   border-radius: 15px;
 
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 8vmin;
+  line-height: 9vmin;
 }
 #rightboxcontainter {
   height: 100%;
@@ -33,15 +31,14 @@
   text-align: center;
 }
 #rightbox {
-  height: 60%;
+  height: 180px;
   background-color:#EB8376;
-  border:solid grey;
   box-sizing: border-box;
   border-width:5px;
   border-radius: 15px;
 
-  font-size:30px;
-  line-height: 30px;
+  font-size:6vmin;
+  line-height: 7vmin;
 }
 #arrowiconbox {
   height: 100%;
