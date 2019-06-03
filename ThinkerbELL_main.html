@@ -54,21 +54,17 @@
     <div id="area2"></div>
     
     <div id="setting">
-        <div id="start_presentation">
-                <h2 class="ui header" style="width: 100%;">
-                        <div class="content">
-                                Are you sure you want to finish presentation?
-                        </div>
-                </h2>
+        <div class="ui huge compact icon floating message">
+                <i class="exclamation icon"></i>
+                <div class="content">
+                    <div class="header">
+                        Finish Presentation?
+                    </div>
+                    <br>
+                    <button class="ui left attached button" id="cancel" style="cursor: pointer; width: 35%; text-align: center;">No</button>
+                    <button class="primary right attached ui button" id="finish" style="cursor: pointer; width: 35%; text-align: center;">Yes</button>
+                </div>
         </div>
-        <table id="button">
-            <tr>
-                <td class="button_in">
-                    <button class="ui left attached button" id="cancel" style="cursor: pointer; width: 40%; text-align: center;">Cancel</button>
-                    <button class="primary right attached ui button" id="finish" style="cursor: pointer; width: 40%; text-align: center;">Yes</button>
-                </td>
-            </tr>
-        </table>
     </div>
     
     <div class="textbox" id="ready" onclick="start()">
