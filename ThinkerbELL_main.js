@@ -163,6 +163,7 @@ if(t>=T){
   var dif = twidth - pwidth;
   if (twidth >= 100) {
     clearInterval(time);
+    tpointer.innerHTML = "<img class='horse' src='./Rearing-Horse.gif'>";
   } 
   else {
     twidth+=(1000/T); 
