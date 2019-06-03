@@ -302,7 +302,8 @@ function Edit() {
     if (beforetext != undefined) {
         textareaScript.value = String(beforetext);
     } else {
-        textareaScript.value = "Copy&Paste";
+        textareaScript.value = "";
+        textareaScript.placeholder = "Copy&Paste";
     }
     document.getElementById("draggable").innerHTML = "";
     textareaScript.style.width = "100%";
