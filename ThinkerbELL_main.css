@@ -109,7 +109,7 @@
   float: right;
   transform: translateX(30px);
 }
-#horse {
+.horse {
   width: 80px;
   height: 80px;
   float: right;
