@@ -103,7 +103,7 @@ function addRow(keywords, index) {
     td0.style.width = "10%";
     td3.style.width = "10%";
     tr.bgColor = "#FAD2A6";
-    tr.id = keywords[0] + index;
+    tr.id = index;
     tr.appendChild(td0);
     tr.appendChild(td1);
     tr.appendChild(td3);
@@ -112,19 +112,19 @@ function addRow(keywords, index) {
         var td0 = document.createElement("td");
         var temp_index = i;
         td0.innerHTML = "<button class='ui blue button' style='width: 30%;  display: flex;align-items: center;justify-content: center; transform: scale(0.8);' onclick='change_index(\"" + temp_index + "\" )' >" + String(temp_index) + "</button>";
-        var tr = tableKeywords.childNodes[i];
+        var tr1 = tableKeywords.childNodes[i];
+        tr1.id ++;
         var td = document.createElement("td");
         td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i-1) + "\" )' ><i class='minus icon'></i></button>";
-        tr.childNodes[2].childNodes[0].remove();
-        tr.childNodes[0].childNodes[0].remove();
-        tr.childNodes[0].appendChild(td0.childNodes[0]);
-        tr.childNodes[2].appendChild(td.childNodes[0]);
+        tr1.childNodes[2].childNodes[0].remove();
+        tr1.childNodes[0].childNodes[0].remove();
+        tr1.childNodes[0].appendChild(td0.childNodes[0]);
+        tr1.childNodes[2].appendChild(td.childNodes[0]);
     }
-    var offset = $('#' + keywords[0] + index).offset();
-    $('#scrollbox').scrollTop(offset.top);
+    $('#scrollbox').scrollTop(50 * index);
     setTimeout(function () {
-        tableKeywords.children[Number(index)].bgColor = "";
-    }, 1000);
+        tr.bgColor = "";
+    }, 500);
 }
 function change_index(text_index) {
     var input_index = document.createElement("input");
@@ -151,12 +151,12 @@ function change_index(text_index) {
                     deleteRow(input_keyword, Number(text_index) - 1); // delete text_index
                     if (text_index > input_index.value) {
                         deleteRow(change_keyword, Number(input_index.value) - 1); //delete input_index
+                        addRow(change_keyword, Number(text_index) - 2);
                         addRow(input_keyword, Number(input_index.value) - 1);
-                        addRow(change_keyword, Number(text_index) - 1);
                     }else{
                         deleteRow(change_keyword, Number(input_index.value) - 2); //delete input_index
-                        addRow(input_keyword, Number(input_index.value) - 2);
                         addRow(change_keyword, Number(text_index) - 1);
+                        addRow(input_keyword, Number(input_index.value) - 1);
                     }
                 }
             } else {
@@ -223,6 +223,7 @@ function Enter_Check() {
 function deleteRow(keywords, order) {
     for (var i = Number(order) + 2 ; i < tableKeywords.childNodes.length - 1; i++) {
         var tr = tableKeywords.childNodes[i];
+        tr.id--;
         tr.childNodes[2].childNodes[0].remove();
         var td = document.createElement("td");
         td.innerHTML = "<button class='ui icon button' style='transform: scale(0.8);' onclick='deleteBtn(\"" + keywords + "\",\"" + Number(i-2) + "\" )' ><i class='minus icon'></i></button>";
