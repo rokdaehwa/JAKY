@@ -1,5 +1,5 @@
 # JAKY
-team jaky
+team JAKY
 
 ThinkerbELL_(   ).html
 
